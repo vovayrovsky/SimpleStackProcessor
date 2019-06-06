@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "C:/Users/KekKuLe/Desktop/temp/Code/SSP/FPGA/CPU.xst" -ofn "C:/Users/KekKuLe/Desktop/temp/Code/SSP/FPGA/CPU.syr" 

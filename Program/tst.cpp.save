@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdint.h>
+
+int main()
+    {
+    uint16_t c = 0;
+
+    FILE* 
+
+    fscanf (, "%x", &c);
+
+    printf ("%x", c);
+    }

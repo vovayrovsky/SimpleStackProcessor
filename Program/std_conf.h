@@ -1,0 +1,10 @@
+#ifndef STD_CONF_GUARD
+#define STD_CONF_GUARD
+
+#define STACK_START_POINT 0xFFFF
+#define ENTRY_POINT 0x0020
+#define VIEW_PORT 0x0010
+
+#define MEMORY_SIZE 0xFFFF
+
+#endif
