@@ -4,7 +4,7 @@
 
 All commands start with 6-bit opcode. Others bits are unusable except PUSH command. PUSH pushes 10 last bits into stack.
 
-To see opcode list: [CS.h](https://github.com/vovayrovsky/SimpleStackProcessor/blob/master/Program/CS.h)
+To see opcode list: [CS.h](Program/CS.h)
 
 #Memory map
 
