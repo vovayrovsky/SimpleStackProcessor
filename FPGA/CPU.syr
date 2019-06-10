@@ -4,7 +4,7 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Parameter xsthdpdir set to xst
 
@@ -105,16 +105,16 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Analyzing Verilog file "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\sign.v" into library work
+Analyzing Verilog file "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\sign.v" into library work
 Parsing module <incdec>.
-Analyzing Verilog file "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\register.v" into library work
+Analyzing Verilog file "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\register.v" into library work
 Parsing module <register>.
-Analyzing Verilog file "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\mux.v" into library work
+Analyzing Verilog file "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\mux.v" into library work
 Parsing module <mux2>.
 Parsing module <mux4>.
-Analyzing Verilog file "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\ALU.v" into library work
+Analyzing Verilog file "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\ALU.v" into library work
 Parsing module <ALU>.
-Analyzing Verilog file "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" into library work
+Analyzing Verilog file "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" into library work
 Parsing module <CPU>.
 
 =========================================================================
@@ -122,45 +122,54 @@ Parsing module <CPU>.
 =========================================================================
 
 Elaborating module <CPU>.
-WARNING:HDLCompiler:1127 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 27: Assignment to opcode ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 33: Assignment to opcode ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 34: Assignment to in_val ignored, since the identifier is never used
 
 Elaborating module <register>.
-WARNING:HDLCompiler:189 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 36: Size mismatch in connection of port <out>. Formal port size is 16-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:1127 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 36: Assignment to R2_0 ignored, since the identifier is never used
+WARNING:HDLCompiler:189 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 42: Size mismatch in connection of port <out>. Formal port size is 16-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:1127 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 42: Assignment to R2_0 ignored, since the identifier is never used
+
+Elaborating module <register(start_value=16'b1111111111111111)>.
+
+Elaborating module <register(start_value=32'b011111)>.
 
 Elaborating module <incdec>.
-WARNING:HDLCompiler:413 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\sign.v" Line 13: Result of 32-bit expression is truncated to fit in 16-bit target.
-
-Elaborating module <mux2>.
-
-Elaborating module <ALU>.
-WARNING:HDLCompiler:1499 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\ALU.v" Line 3: Empty module <ALU> remains a black box.
+WARNING:HDLCompiler:413 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\sign.v" Line 13: Result of 32-bit expression is truncated to fit in 16-bit target.
 
 Elaborating module <mux4>.
-WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 17: Net <cmd_w> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 18: Net <R1_w> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 19: Net <R2_w> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 21: Net <SR_w> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 22: Net <PC_w> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 35: Net <R2_o[15]> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 49: Net <SR_inc> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 50: Net <PC_inc> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 55: Net <SR_incc> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 56: Net <PC_incc> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 63: Net <alu_func[2]> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 69: Net <addr_sel[1]> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" Line 70: Net <data_sel[1]> does not have a driver.
-WARNING:Xst:2972 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" line 36. All outputs of instance <R2> of block <register> are unconnected in block <CPU>. Underlying logic will be removed.
+WARNING:HDLCompiler:189 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 64: Size mismatch in connection of port <i3>. Formal port size is 16-bit while actual signal size is 32-bit.
+WARNING:HDLCompiler:189 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 65: Size mismatch in connection of port <i3>. Formal port size is 16-bit while actual signal size is 32-bit.
+
+Elaborating module <ALU>.
+WARNING:HDLCompiler:1499 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\ALU.v" Line 3: Empty module <ALU> remains a black box.
+WARNING:HDLCompiler:189 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 78: Size mismatch in connection of port <i3>. Formal port size is 16-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 23: Net <cmd_w> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 24: Net <R1_w> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 25: Net <R2_w> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 27: Net <SR_w> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 28: Net <PC_w> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 41: Net <R2_o[15]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 55: Net <SR_inc> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 56: Net <PC_inc> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 61: Net <SR_incc[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 62: Net <PC_incc[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 69: Net <ALU_func[2]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 75: Net <addr_sel[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 76: Net <data_sel[1]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 78: Net <R1_out> does not have a driver.
+WARNING:Xst:2972 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" line 42. All outputs of instance <R2> of block <register> are unconnected in block <CPU>. Underlying logic will be removed.
 
 =========================================================================
 *                           HDL Synthesis                               *
 =========================================================================
 
 Synthesizing Unit <CPU>.
-    Related source file is "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v".
-INFO:Xst:3210 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\CPU.v" line 36: Output port <out> of the instance <R2> is unconnected or connected to loadless signal.
+    Related source file is "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v".
+INFO:Xst:3210 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" line 42: Output port <out> of the instance <R2> is unconnected or connected to loadless signal.
 WARNING:Xst:653 - Signal <R2_o> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <alu_func> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <SR_incc> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <PC_incc> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <ALU_func> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <addr_sel> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <data_sel> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <cmd_w> is used but never assigned. This sourceless signal will be automatically connected to value GND.
@@ -170,34 +179,44 @@ WARNING:Xst:653 - Signal <SR_w> is used but never assigned. This sourceless sign
 WARNING:Xst:653 - Signal <PC_w> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <SR_inc> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:653 - Signal <PC_inc> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <SR_incc> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <PC_incc> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <R1_out> is used but never assigned. This sourceless signal will be automatically connected to value GND.
     Summary:
 	no macro.
 Unit <CPU> synthesized.
 
 Synthesizing Unit <register>.
-    Related source file is "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\register.v".
+    Related source file is "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\register.v".
+        start_value = 0
     Found 16-bit register for signal <out>.
     Summary:
 	inferred  16 D-type flip-flop(s).
 Unit <register> synthesized.
 
+Synthesizing Unit <register_1>.
+    Related source file is "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\register.v".
+        start_value = 16'b1111111111111111
+    Found 16-bit register for signal <out>.
+    Summary:
+	inferred  16 D-type flip-flop(s).
+Unit <register_1> synthesized.
+
+Synthesizing Unit <register_2>.
+    Related source file is "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\register.v".
+        start_value = 32'b00000000000000000000000000011111
+    Found 16-bit register for signal <out>.
+    Summary:
+	inferred  16 D-type flip-flop(s).
+Unit <register_2> synthesized.
+
 Synthesizing Unit <incdec>.
-    Related source file is "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\sign.v".
-    Found 16-bit adder for signal <i0[15]_GND_3_o_add_0_OUT> created at line 13.
+    Related source file is "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\sign.v".
+    Found 16-bit adder for signal <i0[15]_GND_5_o_add_0_OUT> created at line 13.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 Unit <incdec> synthesized.
 
-Synthesizing Unit <mux2>.
-    Related source file is "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\mux.v".
-    Summary:
-	inferred   1 Multiplexer(s).
-Unit <mux2> synthesized.
-
 Synthesizing Unit <mux4>.
-    Related source file is "C:\Users\KekKuLe\Desktop\temp\Code\SSP\FPGA\mux.v".
+    Related source file is "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\mux.v".
     Found 16-bit 4-to-1 multiplexer for signal <o0> created at line 35.
     Summary:
 	inferred   1 Multiplexer(s).
@@ -212,8 +231,7 @@ Macro Statistics
 # Registers                                            : 4
  16-bit register                                       : 4
 # Multiplexers                                         : 4
- 16-bit 2-to-1 multiplexer                             : 2
- 16-bit 4-to-1 multiplexer                             : 2
+ 16-bit 4-to-1 multiplexer                             : 4
 
 =========================================================================
 
@@ -221,24 +239,31 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
-WARNING:Xst:1293 - FF/Latch <out_3> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_4> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_5> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_6> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_7> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_8> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_9> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_10> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_11> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_12> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_13> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_14> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_15> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_0> has a constant value of 0 in block <PC>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_1> has a constant value of 0 in block <PC>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_2> has a constant value of 0 in block <PC>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_3> has a constant value of 0 in block <PC>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_4> has a constant value of 0 in block <PC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1290 - Hierarchical block <sr_mux> is unconnected in block <CPU>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <pc_mux> is unconnected in block <CPU>.
+   It will be removed from the design.
+WARNING:Xst:1293 - FF/Latch <out_0> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_1> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_2> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_3> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_4> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_5> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_6> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_7> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_8> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_9> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_10> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_11> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_12> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_13> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_14> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_15> has a constant value of 1 in block <SR>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_0> has a constant value of 1 in block <PC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_1> has a constant value of 1 in block <PC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_2> has a constant value of 1 in block <PC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_3> has a constant value of 1 in block <PC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_4> has a constant value of 1 in block <PC>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <out_5> has a constant value of 0 in block <PC>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <out_6> has a constant value of 0 in block <PC>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <out_7> has a constant value of 0 in block <PC>. This FF/Latch will be trimmed during the optimization process.
@@ -260,6 +285,12 @@ WARNING:Xst:1293 - FF/Latch <out_6> has a constant value of 0 in block <cmd>. Th
 WARNING:Xst:1293 - FF/Latch <out_7> has a constant value of 0 in block <cmd>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <out_8> has a constant value of 0 in block <cmd>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <out_9> has a constant value of 0 in block <cmd>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_10> has a constant value of 0 in block <cmd>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_11> has a constant value of 0 in block <cmd>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_12> has a constant value of 0 in block <cmd>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_13> has a constant value of 0 in block <cmd>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_14> has a constant value of 0 in block <cmd>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_15> has a constant value of 0 in block <cmd>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <out_0> has a constant value of 0 in block <R1>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <out_1> has a constant value of 0 in block <R1>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <out_2> has a constant value of 0 in block <R1>. This FF/Latch will be trimmed during the optimization process.
@@ -276,19 +307,6 @@ WARNING:Xst:1293 - FF/Latch <out_12> has a constant value of 0 in block <R1>. Th
 WARNING:Xst:1293 - FF/Latch <out_13> has a constant value of 0 in block <R1>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <out_14> has a constant value of 0 in block <R1>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <out_15> has a constant value of 0 in block <R1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_0> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_1> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <out_2> has a constant value of 0 in block <SR>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <out_10> of sequential type is unconnected in block <cmd>.
-WARNING:Xst:2677 - Node <out_11> of sequential type is unconnected in block <cmd>.
-WARNING:Xst:2677 - Node <out_12> of sequential type is unconnected in block <cmd>.
-WARNING:Xst:2677 - Node <out_13> of sequential type is unconnected in block <cmd>.
-WARNING:Xst:2677 - Node <out_14> of sequential type is unconnected in block <cmd>.
-WARNING:Xst:2677 - Node <out_15> of sequential type is unconnected in block <cmd>.
-WARNING:Xst:1290 - Hierarchical block <sr_mux> is unconnected in block <CPU>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <pc_mux> is unconnected in block <CPU>.
-   It will be removed from the design.
 
 =========================================================================
 Advanced HDL Synthesis Report
@@ -299,52 +317,64 @@ Macro Statistics
 # Registers                                            : 64
  Flip-Flops                                            : 64
 # Multiplexers                                         : 4
- 16-bit 2-to-1 multiplexer                             : 2
- 16-bit 4-to-1 multiplexer                             : 2
+ 16-bit 4-to-1 multiplexer                             : 4
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:2973 - All outputs of instance <cmd> of block <register> are unconnected in block <CPU>. Underlying logic will be removed.
-WARNING:Xst:2973 - All outputs of instance <PC> of block <register> are unconnected in block <CPU>. Underlying logic will be removed.
+WARNING:Xst:1989 - Unit <CPU>: instances <cmd>, <R1> of unit <register> are equivalent, second instance is removed
+WARNING:Xst:1293 - FF/Latch <out_0> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_1> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_2> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_3> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_4> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_5> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_6> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_7> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_8> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_9> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_10> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_11> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_12> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_13> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_14> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_15> has a constant value of 1 in block <register_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_0> has a constant value of 1 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_1> has a constant value of 1 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_2> has a constant value of 1 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_3> has a constant value of 1 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_4> has a constant value of 1 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_5> has a constant value of 0 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_6> has a constant value of 0 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_7> has a constant value of 0 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_8> has a constant value of 0 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_9> has a constant value of 0 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_10> has a constant value of 0 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_11> has a constant value of 0 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_12> has a constant value of 0 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_13> has a constant value of 0 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_14> has a constant value of 0 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_15> has a constant value of 0 in block <register_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <out_0> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_1> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_2> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_3> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_4> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_5> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_6> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_7> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_8> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_9> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_10> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_11> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_12> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_13> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_14> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <out_15> has a constant value of 0 in block <register>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <CPU> ...
-
-Optimizing unit <register> ...
-WARNING:Xst:1293 - FF/Latch <R1/out_0> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_1> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_2> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_3> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_4> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_5> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_6> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_7> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_8> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_9> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_10> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_11> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_12> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_13> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_14> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <R1/out_15> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_0> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_1> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_2> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_3> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_4> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_5> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_6> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_7> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_8> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_9> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_10> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_11> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_12> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_13> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_14> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR/out_15> has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
 
 Mapping all equations...
 Building and optimizing final netlist ...
@@ -377,8 +407,9 @@ Top Level Output File Name         : CPU.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 1
+# BELS                             : 2
 #      GND                         : 1
+#      VCC                         : 1
 # IO Buffers                       : 32
 #      OBUF                        : 32
 # Others                           : 1
@@ -400,7 +431,7 @@ Slice Logic Distribution:
    Number of unique control sets:         0
 
 IO Utilization: 
- Number of IOs:                          49
+ Number of IOs:                          51
  Number of bonded IOBs:                  32  out of    232    13%  
 
 Specific Feature Utilization:
@@ -451,13 +482,13 @@ Cross Clock Domains Report:
 
 
 Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 6.98 secs
+Total CPU time to Xst completion: 7.08 secs
  
 --> 
 
-Total memory usage is 261012 kilobytes
+Total memory usage is 260756 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  132 (   0 filtered)
+Number of warnings :  153 (   0 filtered)
 Number of infos    :    1 (   0 filtered)
 
