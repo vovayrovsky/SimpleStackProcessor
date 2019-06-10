@@ -49,8 +49,8 @@ wire [15 : 0] PC_in;
 wire [15 : 0] SR_out; wire [15 : 0] SR_id;
 wire [15 : 0] PC_out; wire [15 : 0] PC_id;
 
-register SR (clk, SR_w, SR_in, SR_out);
-register PC (clk, PC_w, PC_in, PC_out);
+register #(`STACK_START_POINT) SR (clk, SR_w, SR_in, SR_out);
+register #(`ENTRY_POINT - 1) PC (clk, PC_w, PC_in, PC_out);
 
 wire SR_inc;
 wire PC_inc;
@@ -75,7 +75,7 @@ ALU alu (ALU_func, R1_o, R2_o, ALU_res);
 wire [1 : 0] addr_sel;
 wire [1 : 0] data_sel;
 
-mux4 addr_mux (addr_sel, SR_out, SR_id,  PC_id,   R1_out, addr);
-mux4 data_mux (data_sel, SR_out, PC_out, ALU_res, in_val, out_data);
+mux4 addr_mux (addr_sel, SR_out, SR_id,  PC_out,  R1_out, addr);
+mux4 data_mux (data_sel, SR_out, PC_id,  ALU_res, cmd_o,  out_data);
 
 endmodule
