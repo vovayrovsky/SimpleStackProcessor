@@ -6,10 +6,11 @@
 module CPU(
     input wire clk,
     
+    input wire memory_ready,
     input wire [15 : 0] in_data,
     
     output wire error,
-    output wire write_memory,
+    output wire memory_w,
     
     output wire [15 : 0] addr,
     output wire [15 : 0] out_data
@@ -78,4 +79,25 @@ wire [1 : 0] data_sel;
 mux4 addr_mux (addr_sel, SR_out, SR_id,  PC_out,  R1_out, addr);
 mux4 data_mux (data_sel, SR_out, PC_id,  ALU_res, cmd_o,  out_data);
 
+//------------------------------------------------------------------------------
+
+ControlUnit CU(
+            .clk            (clk),
+            .opcode         (opcode),
+            .memory_ready   (memory_ready),
+            .cmd_w          (cmd_w),
+            .R1_w           (R1_w),
+            .R2_w           (R2_w),
+            .SR_w           (SR_w),
+            .PC_w           (PC_w),
+            .SR_inc         (SR_inc),
+            .PC_inc         (PC_inc),
+            .SR_incc        (SR_incc),
+            .PC_incc        (PC_incc),
+            .ALU_func       (ALU_func),
+            .addr_sel       (addr_sel),
+            .data_set       (data_sel),
+            .memory_w       (memory_w),
+            .error          (error)
+            );
 endmodule

@@ -103,9 +103,7 @@ module ControlUnit(
     
     output reg memory_w,
 
-    output reg error,
-    
-    output reg [15 : 0] addr //for tests 
+    output reg error
     );
 
 reg [7 : 0] state;
@@ -168,16 +166,12 @@ always@ (negedge clk)
                             memory_w <= 1;
                             cmd_w    <= 1;
                             
-                            addr <= addr + 1;
-                    
                             end
                             
                     `MOV:   begin
                                 
                             addr_sel    <= `ADDR_SR;
                             cmd_w       <= 1;
-                            
-                            addr <= addr + 1;
                     
                             end
                             
@@ -207,8 +201,6 @@ always@ (negedge clk)
                         
                         R1_w        <= 1;
                         
-                        addr <= addr + 1;
-                        
                         end
                         
         `MOV_LDR2_S:    begin
@@ -227,8 +219,6 @@ always@ (negedge clk)
 
                         memory_w    <= 1;
                         
-                        addr <= addr + 1;                        
-                        
                         end
                  
         `MOV_S:         begin
@@ -246,8 +236,6 @@ always@ (negedge clk)
         
                     addr_sel <= `ADDR_PC;
         
-                    addr <= addr + 1;
-                    
                     end
                
         endcase
@@ -311,8 +299,6 @@ initial
     memory_w = 0;
 
     error = 0;
-    
-    addr = 0;
     
     end
 

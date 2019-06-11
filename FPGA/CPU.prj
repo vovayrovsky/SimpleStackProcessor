@@ -1,5 +1,6 @@
 verilog work "sign.v"
 verilog work "register.v"
 verilog work "mux.v"
+verilog work "ControlUnit.v"
 verilog work "ALU.v"
 verilog work "CPU.v"
