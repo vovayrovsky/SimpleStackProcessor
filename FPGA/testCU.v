@@ -52,10 +52,12 @@ module testCU;
 
 	initial begin
 		// Initialize Inputs
-		clk     = 0;
+		clk     = 1;
 		opcode  = 6'b00;
 		// Wait 100 ns for global reset to finish
 		#100;
+        clk = 0;
+        #10;
         
 		for (i = 0; i < 20; i = i + 1)
             begin
@@ -121,7 +123,7 @@ initial
     
     state        = 0;
     old_addr     = 0;
-    memory_ready = 0;
+    memory_ready = 1;
     
     end
 
