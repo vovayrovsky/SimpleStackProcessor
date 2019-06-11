@@ -40,7 +40,7 @@ wire [15 : 0] R1_o;
 register R1  (clk, R1_w,  in_data, R1_o);
 
 wire [15 : 0] R2_o;
-register R2  (clk, R2_w,  in_data, R2_0);
+register R2  (clk, R2_w,  in_data, R2_o);
 
 //------------------------------------------------------------------------------
 
@@ -62,8 +62,8 @@ incdec PC_idc (PC_inc, PC_out, PC_id);
 wire [1 : 0] SR_incc;
 wire [1 : 0] PC_incc;
 
-mux4 sr_mux (SR_incc, ALU_res, SR_id, `STACK_START_POINT, 0, SR_in);
-mux4 pc_mux (PC_incc, ALU_res, PC_id, `ENTRY_POINT,       0, PC_in);
+mux4 sr_mux (SR_incc, ALU_res, SR_id, `STACK_START_POINT, 16'h0, SR_in);
+mux4 pc_mux (PC_incc, ALU_res, PC_id, `ENTRY_POINT,       16'h0, PC_in);
 
 //------------------------------------------------------------------------------
 
@@ -76,7 +76,7 @@ ALU alu (ALU_func, R1_o, R2_o, ALU_res);
 wire [1 : 0] addr_sel;
 wire [1 : 0] data_sel;
 
-mux4 addr_mux (addr_sel, SR_out, SR_id,  PC_out,  R1_out, addr);
+mux4 addr_mux (addr_sel, SR_out, SR_id,  PC_out,  R1_o, addr);
 mux4 data_mux (data_sel, SR_out, PC_id,  ALU_res, cmd_o,  out_data);
 
 //------------------------------------------------------------------------------
@@ -96,7 +96,7 @@ ControlUnit CU(
             .PC_incc        (PC_incc),
             .ALU_func       (ALU_func),
             .addr_sel       (addr_sel),
-            .data_set       (data_sel),
+            .data_sel       (data_sel),
             .memory_w       (memory_w),
             .error          (error)
             );
