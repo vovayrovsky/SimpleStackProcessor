@@ -50,7 +50,7 @@ wire [15 : 0] SR_out; wire [15 : 0] SR_id;
 wire [15 : 0] PC_out; wire [15 : 0] PC_id;
 
 register #(`STACK_START_POINT) SR (clk, SR_w, SR_in, SR_out);
-register #(`ENTRY_POINT - 1) PC (clk, PC_w, PC_in, PC_out);
+register #(`ENTRY_POINT) PC (clk, PC_w, PC_in, PC_out);
 
 wire SR_inc;
 wire PC_inc;
