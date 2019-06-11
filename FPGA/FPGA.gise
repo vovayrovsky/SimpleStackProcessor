@@ -41,6 +41,7 @@
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="testCPU_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="testCU_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="testCU_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="testCU_isim_beh.wdb"/>
@@ -55,28 +56,28 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1560244957" xil_pn:in_ck="-4159886734012499345" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1560244957">
+    <transform xil_pn:end_ts="1560246016" xil_pn:in_ck="-2035154717983249417" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1560246016">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="ALU.v"/>
       <outfile xil_pn:name="CPU.v"/>
       <outfile xil_pn:name="ControlUnit.v"/>
+      <outfile xil_pn:name="memory_test.v"/>
       <outfile xil_pn:name="mux.v"/>
       <outfile xil_pn:name="register.v"/>
       <outfile xil_pn:name="sign.v"/>
+      <outfile xil_pn:name="testCPU.v"/>
       <outfile xil_pn:name="testCU.v"/>
     </transform>
     <transform xil_pn:end_ts="1560241202" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-8442348421760940369" xil_pn:start_ts="1560241202">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
     </transform>
     <transform xil_pn:end_ts="1560241202" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="8714484076890004589" xil_pn:start_ts="1560241202">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
     </transform>
     <transform xil_pn:end_ts="1560241202" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-4992425658469241780" xil_pn:start_ts="1560241202">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -88,6 +89,7 @@
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="ALU.v"/>
@@ -159,6 +161,7 @@
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="CPU.lso"/>
