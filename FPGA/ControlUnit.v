@@ -25,12 +25,26 @@
 `define HLT  6'h3F   //0xFC
 
 //------------------------------------------------------------------------------------------------
+//ALU func
+
+`define R1_alu  0
+`define R2_alu  1
+`define ADD_alu 2
+`define SUB_alu 3
+`define MUL_alu 4
+`define DIV_alu 5
+
+//------------------------------------------------------------------------------------------------
 //States
-`define PC_INC_S  8'h0E  
-`define GET_CMD_S 8'h0F
+`define PC_INC_S    8'h0E  
+`define GET_CMD_S   8'h0F
 
-`define PUSH_S    8'h10
+`define PUSH_S      8'h10
 
+`define MOV_LDR1_S  8'h11
+`define MOV_LDR2_S  8'h12
+`define MOV_LKR2_S  8'h13
+`define MOV_S       8'h14
 
 //------------------------------------------------------------------------------------------------
 //Some constants
@@ -82,7 +96,7 @@ module ControlUnit(
     output reg [1 : 0] SR_incc,
     output reg [1 : 0] PC_incc,
 
-    output reg [2 : 0] ALU_func,
+    output reg [3 : 0] ALU_func,
 
     output reg [1 : 0] addr_sel,
     output reg [1 : 0] data_sel,
@@ -107,14 +121,22 @@ always@ (negedge clk)
     
         case (state)
         
-        `GET_CMD_S: case (opcode)
+        `GET_CMD_S:     case (opcode)
                   
-                    `PUSH: state <= `PUSH_S;
-                  
-                    endcase
+                        `PUSH: state <= `PUSH_S;
+                        `MOV:  state <= `MOV_LDR1_S;
+                    
+                        endcase
         
-        `PUSH_S:    state <= `PC_INC_S;
+        `PUSH_S:        state <= `PC_INC_S;
+        
+        `MOV_LDR1_S:    state <= `MOV_LDR2_S;
+        `MOV_LDR2_S:    state <= `MOV_LKR2_S;
+        `MOV_LKR2_S:    state <= `MOV_S;
+        `MOV_S:         state <= `PC_INC_S;
+        
         `PC_INC_S:  state <= `GET_CMD_S;
+        
         
         endcase
         
@@ -144,12 +166,26 @@ always@ (negedge clk)
                             SR_incc  <= `SR_ID;
                             
                             memory_w <= 1;
+                            cmd_w    <= 1;
+                            
+                            addr <= addr + 1;
                     
+                            end
+                            
+                    `MOV:   begin
+                                
+                            addr_sel    <= `ADDR_SR;
+                            cmd_w       <= 1;
+                            
                             addr <= addr + 1;
                     
                             end
                             
                     endcase
+        
+
+//------------------------------------------------------------------------------------------------
+//Push branch      
         
         `PUSH_S:    begin
                     
@@ -160,6 +196,52 @@ always@ (negedge clk)
         
                     end
                
+//------------------------------------------------------------------------------------------------
+//Mov branch       
+        
+        `MOV_LDR1_S:    begin
+                        
+                        addr_sel    <= `ADDR_SRI;
+                        SR_INC      <= `IDC_INC;
+                        SR_INCC     <= `SR_ID;
+                        
+                        R1_w        <= 1;
+                        
+                        addr <= addr + 1;
+                        
+                        end
+                        
+        `MOV_LDR2_S:    begin
+                        
+                        SR_w        <= 1;
+                        R2_w        <= 1;
+                        
+                        end
+                 
+        `MOV_LKR2_S:    begin
+        
+                        addr_sel    <= `ADDR_R1;
+                        data_sel    <= `DATA_ALU;
+                        
+                        ALU_func    <= `R2_alu;
+
+                        memory_w    <= 1;
+                        
+                        addr <= addr + 1;                        
+                        
+                        end
+                 
+        `MOV_S:         begin
+                        
+                        PC_inc  <= `IDC_INC;
+                        PC_incc <= `PC_ID;
+                        PC_w    <= 1;
+                        
+                        end
+
+//------------------------------------------------------------------------------------------------
+//End of all branches
+                       
         `PC_INC_S:  begin
         
                     addr_sel <= `ADDR_PC;
@@ -206,7 +288,7 @@ always@ (negedge clk)
 initial
     begin
     
-    state = 0;
+    state = `GET_CMD_S;
     
     cmd_w = 0;
     R1_w = 0;

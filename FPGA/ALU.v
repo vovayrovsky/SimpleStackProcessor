@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 
-`define R1  0
-`define R2  1
-`define ADD 2
-`define SUB 3
-`define MUL 4
-`define DIV 5
+`define R1_alu  0
+`define R2_alu  1
+`define ADD_alu 2
+`define SUB_alu 3
+`define MUL_alu 4
+`define DIV_alu 5
 
 module ALU(
     input wire [3 : 0] func,
@@ -21,11 +21,11 @@ always@ (*)
     
     case (func)
     
-    `R1:    o0 = i0;
-    `R2:    o0 = i1;
-    `ADD:   o0 = i0 + i1;
-    `SUB:   o0 = i0 - i1;
-    `MUL:   o0 = i0 * i1;
+    `R1_alu:    o0 = i0;
+    `R2_alu:    o0 = i1;
+    `ADD_alu:   o0 = i0 + i1;
+    `SUB_alu:   o0 = i0 - i1;
+    `MUL_alu:   o0 = i0 * i1;
     
     default: o0 = 0;
     
