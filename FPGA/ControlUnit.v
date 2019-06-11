@@ -202,8 +202,8 @@ always@ (negedge clk)
         `MOV_LDR1_S:    begin
                         
                         addr_sel    <= `ADDR_SRI;
-                        SR_INC      <= `IDC_INC;
-                        SR_INCC     <= `SR_ID;
+                        SR_inc      <= `IDC_INC;
+                        SR_incc     <= `SR_ID;
                         
                         R1_w        <= 1;
                         
