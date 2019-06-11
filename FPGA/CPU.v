@@ -66,7 +66,7 @@ mux4 pc_mux (PC_incc, ALU_res, PC_id, `ENTRY_POINT,       0, PC_in);
 
 //------------------------------------------------------------------------------
 
-wire [2 : 0] ALU_func;
+wire [3 : 0] ALU_func;
 
 ALU alu (ALU_func, R1_o, R2_o, ALU_res);
 
