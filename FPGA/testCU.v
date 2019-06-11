@@ -17,7 +17,7 @@ module testCU;
 	wire PC_inc;
 	wire [1:0] SR_incc;
 	wire [1:0] PC_incc;
-	wire [2:0] ALU_func;
+	wire [3:0] ALU_func;
 	wire [1:0] addr_sel;
 	wire [1:0] data_sel;
 	wire memory_w;
@@ -53,7 +53,7 @@ module testCU;
 	initial begin
 		// Initialize Inputs
 		clk     = 1;
-		opcode  = 6'b00;
+		opcode  = 6'h30;
 		// Wait 100 ns for global reset to finish
 		#100;
         clk = 0;

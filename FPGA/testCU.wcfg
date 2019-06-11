@@ -16,6 +16,7 @@
       <obj_property name="ObjectShortName">state[7:0]</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/testCU/clk" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk</obj_property>

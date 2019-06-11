@@ -23,7 +23,7 @@
 #endif
 static const char *ng0 = "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/testCU.v";
 static int ng1[] = {1, 0};
-static unsigned int ng2[] = {0U, 0U};
+static unsigned int ng2[] = {48U, 0U};
 static int ng3[] = {0, 0};
 static int ng4[] = {20, 0};
 
