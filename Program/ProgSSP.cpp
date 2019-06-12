@@ -20,17 +20,14 @@ int main(int argc, char** argv)
 
     Board brd;
 
-    uint16_t dump_len = 0;
+    uint16_t dump_len = 0xFF;
     char buf = 0;
-    fscanf (fin, "%c%c", &dump_len, &buf);
-    dump_len = dump_len << 8 | buf;
 
     if (dump_len == 0) return -1;
 
-    printf ("Program len: %d\nLoading program\n", dump_len);
+    printf ("Loading program\n", dump_len);
     for (uint16_t i = 0; i < dump_len; i++)
         {
-
         fscanf (fin, "%c%c", &(brd.store[i]), &buf);
         brd.store[i] = brd.store[i] << 8 | buf;
         }
