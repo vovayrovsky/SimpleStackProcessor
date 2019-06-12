@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-`define STACK_START_POINT 16'hFFFF
+`define STACK_START_POINT 16'hFFFE
 `define ENTRY_POINT       16'h0020
 
 module CPU(
@@ -31,8 +31,8 @@ wire PC_w;
 //------------------------------------------------------------------------------
 
 wire [15 : 0] cmd_o;
-assign opcode = cmd_o[15 : 10]; 
-assign in_val = cmd_o & 16'h03FF;
+assign opcode = in_data[15 : 10]; 
+assign in_val = in_data & 16'h03FF;
 
 register cmd (clk, cmd_w, in_data, cmd_o);
 
@@ -50,7 +50,7 @@ wire [15 : 0] PC_in;
 wire [15 : 0] SR_out; wire [15 : 0] SR_id;
 wire [15 : 0] PC_out; wire [15 : 0] PC_id;
 
-register #(`STACK_START_POINT) SR (clk, SR_w, SR_in, SR_out);
+register #(`STACK_START_POINT + 1) SR (clk, SR_w, SR_in, SR_out);
 register #(`ENTRY_POINT) PC (clk, PC_w, PC_in, PC_out);
 
 wire SR_inc;
@@ -77,7 +77,7 @@ wire [1 : 0] addr_sel;
 wire [1 : 0] data_sel;
 
 mux4 addr_mux (addr_sel, SR_out, SR_id,  PC_out,  R1_o, addr);
-mux4 data_mux (data_sel, SR_out, PC_id,  ALU_res, cmd_o,  out_data);
+mux4 data_mux (data_sel, SR_out, PC_id,  ALU_res, in_data,  out_data);
 
 //------------------------------------------------------------------------------
 

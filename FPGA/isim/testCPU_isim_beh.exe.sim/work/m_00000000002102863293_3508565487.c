@@ -23,7 +23,7 @@
 #endif
 static const char *ng0 = "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/CPU.v";
 static unsigned int ng1[] = {1023U, 0U};
-static unsigned int ng2[] = {65535U, 0U};
+static unsigned int ng2[] = {65534U, 0U};
 static unsigned int ng3[] = {0U, 0U};
 static unsigned int ng4[] = {32U, 0U};
 
@@ -65,7 +65,7 @@ LAB0:    t1 = (t0 + 7648U);
 LAB3:    goto *t2;
 
 LAB2:    xsi_set_current_line(34, ng0);
-    t2 = (t0 + 3448U);
+    t2 = (t0 + 1368U);
     t4 = *((char **)t2);
     memset(t3, 0, 8);
     t2 = (t3 + 4);
@@ -165,7 +165,7 @@ LAB0:    t1 = (t0 + 7896U);
 LAB3:    goto *t2;
 
 LAB2:    xsi_set_current_line(35, ng0);
-    t2 = (t0 + 3448U);
+    t2 = (t0 + 1368U);
     t3 = *((char **)t2);
     t2 = ((char*)((ng1)));
     t5 = *((unsigned int *)t3);

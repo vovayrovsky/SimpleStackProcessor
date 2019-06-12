@@ -184,6 +184,7 @@ always@ (negedge clk)
         `PUSH_S:    begin
                     
                     SR_w    <= 1;
+                    
                     PC_inc  <= `IDC_INC;
                     PC_incc <= `PC_ID;
                     PC_w    <= 1;
@@ -288,13 +289,13 @@ initial
     SR_inc = 0;
     PC_inc = 0;
 
-    SR_incc = 0;
-    PC_incc = 0;
+    SR_incc = `SR_ID;
+    PC_incc = `PC_ID;
 
     ALU_func = 0;
 
-    addr_sel = 0;
-    data_sel = 0;
+    addr_sel = `ADDR_PC;
+    data_sel = `DATA_ALU;
     
     memory_w = 0;
 

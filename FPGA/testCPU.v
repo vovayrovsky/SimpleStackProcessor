@@ -31,11 +31,11 @@ module testCPU;
 	initial begin
 		// Initialize Inputs
 		clk = 1;
-		in_data = 16'h00FF;
+		in_data = 16'hC000;
 
 		// Wait 100 ns for global reset to finish
 		#100;
-        
+            
         clk = 0;
         #10;
         
