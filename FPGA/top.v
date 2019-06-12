@@ -9,7 +9,7 @@ module top(
     
 wire seg7clk;
     
-seg7clk sclk (clk, seg7clk);    
+seg7clk_s sclk (clk, seg7clk);    
     
 x4seg7 drv(seg7clk, 16'h1234, an, cat);    
     

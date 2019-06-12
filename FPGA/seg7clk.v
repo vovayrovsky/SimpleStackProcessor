@@ -5,7 +5,7 @@
 //
 //divider k: 400000
 
-module seg7clk(
+module seg7clk_s (
     input wire clk,
     output reg sclk
     );
@@ -18,8 +18,12 @@ always@ (posedge clk)
     if (counter < 400000)
         counter <= counter + 1;
     else
+        begin
+        
         counter <= 0;
-    
+        sclk = ~sclk;
+        
+        end
     end
     
 

@@ -6,14 +6,30 @@ module x4seg7(
     input wire [15 : 0] data,
     
     output wire [3 : 0] an,
-    output reg  [7 : 0] cat
+    output wire [7 : 0] cat
     );
 
 reg [1 : 0] counter = 0;
 
 assign an = 1 << counter;
 
-digit_to_sign dts(data[4 * (counter + 1) - 1 : counter * 4], cat);
+reg [3 : 0] digit; 
+
+always@(*)
+    begin
+    
+    case (counter)
+    
+    0: digit = data[3 : 0];
+    1: digit = data[7 : 4];
+    2: digit = data[11 : 8];
+    3: digit = data[15 : 12];
+    
+    endcase
+    
+    end
+
+digit_to_sign dts (digit, cat);
 
 always@ (posedge clk)
     begin
