@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 //Input freq:   100 MHz
-//Output freq:  250 Hz
+//Output freq:  1 Hz
 //
 //divider k: 400000
 
@@ -10,12 +10,12 @@ module seg7clk_s (
     output reg sclk
     );
 
-reg [18 : 0] counter;
+reg [26 : 0] counter;
 
 always@ (posedge clk)
     begin
     
-    if (counter < 400000)
+    if (counter < 100000)
         counter <= counter + 1;
     else
         begin

@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Wed Jun 12 21:28:50 2019
+// Written by: Map P.20131013 on Wed Jun 12 22:06:12 2019
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -16,14 +16,17 @@ COMP "cat<3>" LOCATE = SITE "M14" LEVEL 1;
 COMP "cat<4>" LOCATE = SITE "U18" LEVEL 1;
 COMP "cat<5>" LOCATE = SITE "U17" LEVEL 1;
 COMP "cat<6>" LOCATE = SITE "T18" LEVEL 1;
-TIMEGRP sclk/sclk = BEL "drv/counter_0" BEL "drv/counter_1" BEL "sclk/sclk";
 TIMEGRP clk = BEL "sclk/sclk" BEL "sclk/counter_0" BEL "sclk/counter_1" BEL
         "sclk/counter_2" BEL "sclk/counter_3" BEL "sclk/counter_4" BEL
         "sclk/counter_5" BEL "sclk/counter_6" BEL "sclk/counter_7" BEL
         "sclk/counter_8" BEL "sclk/counter_9" BEL "sclk/counter_10" BEL
         "sclk/counter_11" BEL "sclk/counter_12" BEL "sclk/counter_13" BEL
         "sclk/counter_14" BEL "sclk/counter_15" BEL "sclk/counter_16" BEL
-        "sclk/counter_17" BEL "sclk/counter_18" BEL "clk_BUFGP/BUFG";
+        "sclk/counter_17" BEL "sclk/counter_18" BEL "sclk/counter_19" BEL
+        "sclk/counter_20" BEL "sclk/counter_21" BEL "sclk/counter_22" BEL
+        "sclk/counter_23" BEL "sclk/counter_24" BEL "sclk/counter_25" BEL
+        "sclk/counter_26" BEL "clk_BUFGP/BUFG";
+TIMEGRP sclk/sclk = BEL "sclk/sclk" BEL "drv/counter_1" BEL "drv/counter_0";
 TS_clk = PERIOD TIMEGRP "clk" 100 MHz LOW 50%;
 SCHEMATIC END;
 

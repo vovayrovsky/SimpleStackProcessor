@@ -11,7 +11,7 @@ module x4seg7(
 
 reg [1 : 0] counter = 0;
 
-assign an = 1 << counter;
+assign an = 4'b1111 & ~(1 << counter);
 
 reg [3 : 0] digit; 
 
@@ -50,22 +50,22 @@ always@ (*)
     
     case (digit)
                       //ABCDEFGP
-    4'h0: seg_out <= 8'b11111100;   // A
-    4'h1: seg_out <= 8'b11000000;   //F B
-    4'h2: seg_out <= 8'b11011010;   // G
-    4'h3: seg_out <= 8'h11110010;   //E C
-    4'h4: seg_out <= 8'h01110110;   // D
-    4'h5: seg_out <= 8'h10110110;
-    4'h6: seg_out <= 8'h10111110;
-    4'h7: seg_out <= 8'h11100000;
-    4'h8: seg_out <= 8'h11111110;
-    4'h9: seg_out <= 8'h11110110;
-    4'hA: seg_out <= 8'h11101110;
-    4'hB: seg_out <= 8'h00111110;
-    4'hC: seg_out <= 8'h10011100;
-    4'hD: seg_out <= 8'h01111010;
-    4'hE: seg_out <= 8'h10011110;
-    4'hF: seg_out <= 8'h10001110;
+    4'h0: seg_out <= ~8'b11111100;   // A
+    4'h1: seg_out <= ~8'b01100000;   //F B
+    4'h2: seg_out <= ~8'b11011010;   // G
+    4'h3: seg_out <= ~8'b11110010;   //E C
+    4'h4: seg_out <= ~8'b01100110;   // D
+    4'h5: seg_out <= ~8'b10110110;
+    4'h6: seg_out <= ~8'b10111110;
+    4'h7: seg_out <= ~8'b11100000;
+    4'h8: seg_out <= ~8'b11111110;
+    4'h9: seg_out <= ~8'b11110110;
+    4'hA: seg_out <= ~8'b11101110;
+    4'hB: seg_out <= ~8'b00111110;
+    4'hC: seg_out <= ~8'b10011100;
+    4'hD: seg_out <= ~8'b01111010;
+    4'hE: seg_out <= ~8'b10011110;
+    4'hF: seg_out <= ~8'b10001110;
   
     endcase
     

@@ -3,13 +3,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
+Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
+Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: top.prj
@@ -108,19 +108,6 @@ Slice Utilization Ratio Delta      : 5
 Analyzing Verilog file "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" into library work
 Parsing module <x4seg7>.
 Parsing module <digit_to_sign>.
-WARNING:HDLCompiler:568 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 56: Constant value is truncated to fit in <8> bits.
-WARNING:HDLCompiler:568 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 57: Constant value is truncated to fit in <8> bits.
-WARNING:HDLCompiler:568 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 58: Constant value is truncated to fit in <8> bits.
-WARNING:HDLCompiler:568 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 59: Constant value is truncated to fit in <8> bits.
-WARNING:HDLCompiler:568 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 60: Constant value is truncated to fit in <8> bits.
-WARNING:HDLCompiler:568 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 61: Constant value is truncated to fit in <8> bits.
-WARNING:HDLCompiler:568 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 62: Constant value is truncated to fit in <8> bits.
-WARNING:HDLCompiler:568 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 63: Constant value is truncated to fit in <8> bits.
-WARNING:HDLCompiler:568 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 64: Constant value is truncated to fit in <8> bits.
-WARNING:HDLCompiler:568 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 65: Constant value is truncated to fit in <8> bits.
-WARNING:HDLCompiler:568 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 66: Constant value is truncated to fit in <8> bits.
-WARNING:HDLCompiler:568 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 67: Constant value is truncated to fit in <8> bits.
-WARNING:HDLCompiler:568 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 68: Constant value is truncated to fit in <8> bits.
 Analyzing Verilog file "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\seg7clk.v" into library work
 Parsing module <seg7clk_s>.
 Analyzing Verilog file "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\top.v" into library work
@@ -133,7 +120,7 @@ Parsing module <top>.
 Elaborating module <top>.
 
 Elaborating module <seg7clk_s>.
-WARNING:HDLCompiler:413 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\seg7clk.v" Line 19: Result of 20-bit expression is truncated to fit in 19-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\seg7clk.v" Line 19: Result of 28-bit expression is truncated to fit in 27-bit target.
 
 Elaborating module <x4seg7>.
 WARNING:HDLCompiler:413 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 14: Result of 32-bit expression is truncated to fit in 4-bit target.
@@ -154,20 +141,20 @@ Unit <top> synthesized.
 Synthesizing Unit <seg7clk_s>.
     Related source file is "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\seg7clk.v".
     Found 1-bit register for signal <sclk>.
-    Found 19-bit register for signal <counter>.
-    Found 19-bit adder for signal <counter[18]_GND_2_o_add_2_OUT> created at line 19.
-    Found 19-bit comparator greater for signal <counter[18]_PWR_2_o_LessThan_2_o> created at line 18
+    Found 27-bit register for signal <counter>.
+    Found 27-bit adder for signal <counter[26]_GND_2_o_add_2_OUT> created at line 19.
+    Found 27-bit comparator greater for signal <counter[26]_GND_2_o_LessThan_2_o> created at line 18
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred  20 D-type flip-flop(s).
+	inferred  28 D-type flip-flop(s).
 	inferred   1 Comparator(s).
 Unit <seg7clk_s> synthesized.
 
 Synthesizing Unit <x4seg7>.
     Related source file is "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v".
     Found 2-bit register for signal <counter>.
-    Found 2-bit adder for signal <counter[1]_GND_3_o_add_3_OUT> created at line 37.
-    Found 32-bit shifter logical left for signal <n0005> created at line 14
+    Found 2-bit adder for signal <counter[1]_GND_3_o_add_5_OUT> created at line 37.
+    Found 32-bit shifter logical left for signal <GND_3_o_counter[1]_shift_left_0_OUT> created at line 14
     Found 4x4-bit Read Only RAM for signal <digit>
     Summary:
 	inferred   1 RAM(s).
@@ -191,14 +178,14 @@ Macro Statistics
  16x8-bit single-port Read Only RAM                    : 1
  4x4-bit single-port Read Only RAM                     : 1
 # Adders/Subtractors                                   : 2
- 19-bit adder                                          : 1
  2-bit adder                                           : 1
+ 27-bit adder                                          : 1
 # Registers                                            : 3
  1-bit register                                        : 1
- 19-bit register                                       : 1
  2-bit register                                        : 1
+ 27-bit register                                       : 1
 # Comparators                                          : 1
- 19-bit comparator greater                             : 1
+ 27-bit comparator greater                             : 1
 # Logic shifters                                       : 1
  32-bit shifter logical left                           : 1
 
@@ -250,12 +237,12 @@ Macro Statistics
  16x8-bit single-port distributed Read Only RAM        : 1
  4x4-bit single-port distributed Read Only RAM         : 1
 # Counters                                             : 2
- 19-bit up counter                                     : 1
  2-bit up counter                                      : 1
+ 27-bit up counter                                     : 1
 # Registers                                            : 1
  Flip-Flops                                            : 1
 # Comparators                                          : 1
- 19-bit comparator greater                             : 1
+ 27-bit comparator greater                             : 1
 # Logic shifters                                       : 1
  32-bit shifter logical left                           : 1
 
@@ -267,6 +254,8 @@ Macro Statistics
 
 Optimizing unit <top> ...
 
+Optimizing unit <x4seg7> ...
+
 Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 0.
@@ -277,8 +266,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 22
- Flip-Flops                                            : 22
+# Registers                                            : 30
+ Flip-Flops                                            : 30
 
 =========================================================================
 
@@ -301,18 +290,20 @@ Top Level Output File Name         : top.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 89
+# BELS                             : 134
 #      GND                         : 1
-#      INV                         : 2
-#      LUT1                        : 18
-#      LUT2                        : 26
-#      LUT4                        : 1
-#      LUT6                        : 3
-#      MUXCY                       : 18
+#      INV                         : 3
+#      LUT1                        : 26
+#      LUT2                        : 37
+#      LUT3                        : 1
+#      LUT4                        : 2
+#      LUT5                        : 5
+#      MUXCY                       : 31
 #      VCC                         : 1
-#      XORCY                       : 19
-# FlipFlops/Latches                : 22
-#      FD                          : 22
+#      XORCY                       : 27
+# FlipFlops/Latches                : 30
+#      FD                          : 29
+#      FDE                         : 1
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 12
@@ -325,16 +316,16 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:              22  out of  18224     0%  
- Number of Slice LUTs:                   50  out of   9112     0%  
-    Number used as Logic:                50  out of   9112     0%  
+ Number of Slice Registers:              30  out of  18224     0%  
+ Number of Slice LUTs:                   74  out of   9112     0%  
+    Number used as Logic:                74  out of   9112     0%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:     50
-   Number with an unused Flip Flop:      28  out of     50    56%  
-   Number with an unused LUT:             0  out of     50     0%  
-   Number of fully used LUT-FF pairs:    22  out of     50    44%  
-   Number of unique control sets:         2
+ Number of LUT Flip Flop pairs used:     74
+   Number with an unused Flip Flop:      44  out of     74    59%  
+   Number with an unused LUT:             0  out of     74     0%  
+   Number of fully used LUT-FF pairs:    30  out of     74    40%  
+   Number of unique control sets:         3
 
 IO Utilization: 
  Number of IOs:                          13
@@ -364,8 +355,8 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-sclk/sclk                          | NONE(drv/counter_0)    | 2     |
-clk                                | BUFGP                  | 20    |
+clk                                | BUFGP                  | 28    |
+sclk/sclk                          | NONE(drv/counter_1)    | 2     |
 -----------------------------------+------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -377,7 +368,7 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 3.832ns (Maximum Frequency: 260.926MHz)
+   Minimum period: 3.689ns (Maximum Frequency: 271.107MHz)
    Minimum input arrival time before clock: No path found
    Maximum output required time after clock: 4.778ns
    Maximum combinational path delay: No path found
@@ -387,11 +378,38 @@ Timing Details:
 All values displayed in nanoseconds (ns)
 
 =========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 3.689ns (frequency: 271.107MHz)
+  Total number of paths / destination ports: 1499 / 29
+-------------------------------------------------------------------------
+Delay:               3.689ns (Levels of Logic = 6)
+  Source:            sclk/counter_9 (FF)
+  Destination:       sclk/sclk (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: sclk/counter_9 to sclk/sclk
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               3   0.447   0.995  sclk/counter_9 (sclk/counter_9)
+     LUT5:I0->O            1   0.203   0.000  sclk/Mcompar_counter[26]_GND_2_o_LessThan_2_o_lut<0> (sclk/Mcompar_counter[26]_GND_2_o_LessThan_2_o_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  sclk/Mcompar_counter[26]_GND_2_o_LessThan_2_o_cy<0> (sclk/Mcompar_counter[26]_GND_2_o_LessThan_2_o_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  sclk/Mcompar_counter[26]_GND_2_o_LessThan_2_o_cy<1> (sclk/Mcompar_counter[26]_GND_2_o_LessThan_2_o_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  sclk/Mcompar_counter[26]_GND_2_o_LessThan_2_o_cy<2> (sclk/Mcompar_counter[26]_GND_2_o_LessThan_2_o_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  sclk/Mcompar_counter[26]_GND_2_o_LessThan_2_o_cy<3> (sclk/Mcompar_counter[26]_GND_2_o_LessThan_2_o_cy<3>)
+     MUXCY:CI->O          28   0.258   1.234  sclk/Mcompar_counter[26]_GND_2_o_LessThan_2_o_cy<4> (sclk/Mcompar_counter[26]_GND_2_o_LessThan_2_o_cy<4>)
+     FDE:CE                    0.322          sclk/sclk
+    ----------------------------------------
+    Total                      3.689ns (1.459ns logic, 2.230ns route)
+                                       (39.6% logic, 60.4% route)
+
+=========================================================================
 Timing constraint: Default period analysis for Clock 'sclk/sclk'
-  Clock period: 2.106ns (frequency: 474.721MHz)
+  Clock period: 2.163ns (frequency: 462.406MHz)
   Total number of paths / destination ports: 3 / 2
 -------------------------------------------------------------------------
-Delay:               2.106ns (Levels of Logic = 1)
+Delay:               2.163ns (Levels of Logic = 1)
   Source:            drv/counter_0 (FF)
   Destination:       drv/counter_0 (FF)
   Source Clock:      sclk/sclk rising
@@ -401,53 +419,29 @@ Delay:               2.106ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               7   0.447   0.773  drv/counter_0 (drv/counter_0)
-     INV:I->O              1   0.206   0.579  drv/Mcount_counter_xor<0>11_INV_0 (Result<0>)
+     FD:C->Q               9   0.447   0.829  drv/counter_0 (drv/counter_0)
+     INV:I->O              1   0.206   0.579  drv/Mcount_counter_xor<0>11_INV_0 (drv/Result<0>)
      FD:D                      0.102          drv/counter_0
     ----------------------------------------
-    Total                      2.106ns (0.755ns logic, 1.352ns route)
-                                       (35.8% logic, 64.2% route)
-
-=========================================================================
-Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 3.832ns (frequency: 260.926MHz)
-  Total number of paths / destination ports: 432 / 20
--------------------------------------------------------------------------
-Delay:               3.832ns (Levels of Logic = 3)
-  Source:            sclk/counter_11 (FF)
-  Destination:       sclk/counter_0 (FF)
-  Source Clock:      clk rising
-  Destination Clock: clk rising
-
-  Data Path: sclk/counter_11 to sclk/counter_0
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FD:C->Q               2   0.447   0.981  sclk/counter_11 (sclk/counter_11)
-     LUT6:I0->O            2   0.203   0.617  sclk/counter[18]_PWR_2_o_LessThan_2_o_inv2 (sclk/counter[18]_PWR_2_o_LessThan_2_o_inv2)
-     LUT6:I5->O           19   0.205   1.072  sclk/counter[18]_PWR_2_o_LessThan_2_o_inv3 (sclk/counter[18]_PWR_2_o_LessThan_2_o_inv)
-     LUT2:I1->O            1   0.205   0.000  sclk/counter_0_rstpot (sclk/counter_0_rstpot)
-     FD:D                      0.102          sclk/counter_0
-    ----------------------------------------
-    Total                      3.832ns (1.162ns logic, 2.671ns route)
-                                       (30.3% logic, 69.7% route)
+    Total                      2.163ns (0.755ns logic, 1.408ns route)
+                                       (34.9% logic, 65.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'sclk/sclk'
-  Total number of paths / destination ports: 16 / 9
+  Total number of paths / destination ports: 20 / 10
 -------------------------------------------------------------------------
 Offset:              4.778ns (Levels of Logic = 2)
   Source:            drv/counter_1 (FF)
-  Destination:       an<2> (PAD)
+  Destination:       cat<6> (PAD)
   Source Clock:      sclk/sclk rising
 
-  Data Path: drv/counter_1 to an<2>
+  Data Path: drv/counter_1 to cat<6>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               8   0.447   0.907  drv/counter_1 (drv/counter_1)
-     LUT2:I0->O            3   0.203   0.650  cat<3>1 (cat_3_OBUF)
-     OBUF:I->O                 2.571          an_2_OBUF (an<2>)
+     LUT2:I0->O            3   0.203   0.650  drv/cat<5>1 (cat_5_OBUF)
+     OBUF:I->O                 2.571          cat_6_OBUF (cat<6>)
     ----------------------------------------
     Total                      4.778ns (3.221ns logic, 1.557ns route)
                                        (67.4% logic, 32.6% route)
@@ -462,7 +456,7 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    3.832|         |         |         |
+clk            |    3.689|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock sclk/sclk
@@ -470,20 +464,20 @@ Clock to Setup on destination clock sclk/sclk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-sclk/sclk      |    2.106|         |         |         |
+sclk/sclk      |    2.163|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 5.56 secs
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 5.02 secs
  
 --> 
 
-Total memory usage is 261268 kilobytes
+Total memory usage is 260628 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   16 (   0 filtered)
+Number of warnings :    3 (   0 filtered)
 Number of infos    :    3 (   0 filtered)
 

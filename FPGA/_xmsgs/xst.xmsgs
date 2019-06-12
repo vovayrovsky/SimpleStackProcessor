@@ -5,46 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="568" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 56: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="568" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 57: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="568" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 58: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="568" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 59: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="568" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 60: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="568" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 61: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="568" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 62: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="568" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 63: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="568" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 64: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="568" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 65: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="568" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 66: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="568" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 67: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="568" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 68: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\seg7clk.v" Line 19: Result of <arg fmt="%d" index="1">20</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">19</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\seg7clk.v" Line 19: Result of <arg fmt="%d" index="1">28</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">27</arg>-bit target.
 </msg>
 
 <msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\x4seg7.v" Line 14: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">4</arg>-bit target.
@@ -59,7 +20,7 @@
 <msg type="info" file="Xst" num="3218" delta="old" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram_digit</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
 </msg>
 
-<msg type="info" file="Xst" num="2169" delta="new" >HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+<msg type="info" file="Xst" num="2169" delta="old" >HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 </msg>
 
 </messages>

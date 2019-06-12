@@ -11,7 +11,7 @@ wire seg7clk;
     
 seg7clk_s sclk (clk, seg7clk);    
     
-x4seg7 drv(seg7clk, 16'h1234, an, cat);    
+x4seg7 drv(seg7clk, 16'hDEF0, an, cat);    
     
 /*
 wire memory_ready;
