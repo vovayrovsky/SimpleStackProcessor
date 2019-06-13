@@ -36,15 +36,20 @@
 
 //------------------------------------------------------------------------------------------------
 //States
-`define PC_INC_S    8'h0E  
-`define GET_CMD_S   8'h0F
+`define PC_INC_S        8'h0E  
+`define GET_CMD_S       8'h0F
 
-`define PUSH_S      8'h10
+`define PUSH_S          8'h10
 
-`define MOV_LDR1_S  8'h11
-`define MOV_LDR2_S  8'h12
-`define MOV_LKR2_S  8'h13
-`define MOV_S       8'h14
+`define MOV_LDR1_S      8'h11
+`define MOV_LDR2_S      8'h12
+`define MOV_LKR2_S      8'h13
+`define MOV_S           8'h14
+
+`define SWAP_LDR1_S     8'h15
+`define SWAP_LDR2_S     8'h16
+`define SWAP_P1_S       8'h17
+`define SWAP_P2_S       8'h18
 
 `define HLT_S       8'hFF
 
@@ -126,6 +131,7 @@ always@ (negedge clk)
                         `PUSH:  state <= `PUSH_S;
                         `MOV:   state <= `MOV_LDR1_S;
                         `HLT:   state <= `HLT_S;
+                        `SWAP:  state <= `SWAP_LDR1_S;
                         
                         endcase
         
@@ -135,6 +141,11 @@ always@ (negedge clk)
         `MOV_LDR2_S:    state <= `MOV_LKR2_S;
         `MOV_LKR2_S:    state <= `MOV_S;
         `MOV_S:         state <= `PC_INC_S;
+        
+        `SWAP_LDR1_S:   state <= `SWAP_LDR2_S;
+        `SWAP_LDR2_S:   state <= `SWAP_P1_S;
+        `SWAP_P1_S:     state <= `SWAP_P2_S;
+        `SWAP_P2_S:     state <= `PC_INC_S;
         
         `PC_INC_S:  state <= `GET_CMD_S;
         
@@ -163,19 +174,19 @@ always@ (negedge clk)
                   
                     `PUSH:  begin
                     
-                            addr_sel <= `ADDR_SRI;
-                            data_sel <= `DATA_IMM;
+                            addr_sel    <= `ADDR_SRI;
+                            data_sel    <= `DATA_IMM;
                             
-                            SR_inc   <= `IDC_DEC;
-                            SR_incc  <= `SR_ID;
+                            SR_inc      <= `IDC_DEC;
+                            SR_incc     <= `SR_ID;
                             
-                            memory_w <= 1;
+                            memory_w    <= 1;
                             
-                            cmd_w <= 0;
-                            R1_w <= 0;
-                            R2_w <= 0;
-                            SR_w <= 0;
-                            PC_w <= 0;
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
                             
                             end
                             
@@ -183,12 +194,25 @@ always@ (negedge clk)
                                 
                             addr_sel    <= `ADDR_SR;                    
                                         
-                            cmd_w <= 0;
-                            R1_w <= 0;
-                            R2_w <= 0;
-                            SR_w <= 0;
-                            PC_w <= 0;
-                            memory_w <= 0;
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
+                    
+                            end
+                            
+                    `SWAP:  begin                    
+                                
+                            addr_sel    <= `ADDR_SR;
+                                    
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
                     
                             end
                             
@@ -200,16 +224,16 @@ always@ (negedge clk)
         
         `PUSH_S:    begin
                     
-                    SR_w    <= 1;
+                    SR_w        <= 1;
                     
-                    PC_inc  <= `IDC_INC;
-                    PC_incc <= `PC_ID;
-                    PC_w    <= 1;
+                    PC_inc      <= `IDC_INC;
+                    PC_incc     <= `PC_ID;
+                    PC_w        <= 1;
                     
-                    cmd_w <= 0;
-                    R1_w <= 0;
-                    R2_w <= 0;
-                    memory_w <= 0;
+                    cmd_w       <= 0;
+                    R1_w        <= 0;
+                    R2_w        <= 0;
+                    memory_w    <= 0;
         
                     end
                
@@ -224,11 +248,11 @@ always@ (negedge clk)
                         
                         R1_w        <= 1;
                                         
-                        cmd_w <= 0;
-                        R2_w <= 0;
-                        SR_w <= 0;
-                        PC_w <= 0;
-                        memory_w <= 0;
+                        cmd_w       <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
                         
                         end
                         
@@ -237,10 +261,10 @@ always@ (negedge clk)
                         SR_w        <= 1;
                         R2_w        <= 1;
                                                 
-                        cmd_w <= 0;
-                        R1_w <= 0;
-                        PC_w <= 0;
-                        memory_w <= 0;
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
                         
                         end
                  
@@ -253,25 +277,86 @@ always@ (negedge clk)
 
                         memory_w    <= 1;
                                     
-                        cmd_w <= 0;
-                        R1_w <= 0;
-                        R2_w <= 0;
-                        SR_w <= 0;
-                        PC_w <= 0;
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
 
                         end
                  
         `MOV_S:         begin
                         
-                        PC_inc  <= `IDC_INC;
-                        PC_incc <= `PC_ID;
-                        PC_w    <= 1;
+                        PC_inc      <= `IDC_INC;
+                        PC_incc     <= `PC_ID;
+                        PC_w        <= 1;
                                         
-                        cmd_w <= 0;
-                        R1_w <= 0;
-                        R2_w <= 0;
-                        SR_w <= 0;
-                        memory_w <= 0;
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        memory_w    <= 0;
+
+                        end
+
+//------------------------------------------------------------------------------------------------
+//Swap branch     
+
+        `SWAP_LDR1_S:   begin
+
+                        addr_sel    <= `ADDR_SRI;
+                        SR_inc      <= `IDC_INC;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 1;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+                        
+                        end
+
+        `SWAP_LDR2_S:   begin
+                        
+                        data_sel    <= `DATA_ALU;
+                        
+                        ALU_func    <= `ALU_R1;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 1;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 1;
+        
+                        end
+                        
+        `SWAP_P1_S:     begin
+        
+                        addr_sel    <= `ADDR_SR;
+                        
+                        ALU_func    <= `ALU_R2;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 1;
+                        
+                        end
+                        
+        `SWAP_P2_S:     begin
+                        
+                        PC_inc      <= `IDC_INC;
+                        PC_incc     <= `PC_ID;
+                        PC_w        <= 1;
+                                        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        memory_w    <= 0;
 
                         end
 

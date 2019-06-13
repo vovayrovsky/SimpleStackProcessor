@@ -5,6 +5,12 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="HDLCompiler" num="751" delta="unknown" >"C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/top.v" Line 17: Redeclaration of ansi port <arg fmt="%s" index="1">cpu_clk</arg> is not allowed
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/testtop.v" Line 14: Port <arg fmt="%s" index="1">cpu_clk</arg> is not connected to this instance
+</msg>
+
 <msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/CPU.v" Line 84: Port <arg fmt="%s" index="1">cmd_w</arg> is not connected to this instance
 </msg>
 

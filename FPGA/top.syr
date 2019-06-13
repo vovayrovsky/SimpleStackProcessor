@@ -135,7 +135,7 @@ WARNING:HDLCompiler:751 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackPro
 
 Elaborating module <top>.
 
-Elaborating module <clk_s(delay_k=400000)>.
+Elaborating module <clk_s(delay_k=40000)>.
 WARNING:HDLCompiler:413 - "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\seg7clk.v" Line 16: Result of 28-bit expression is truncated to fit in 27-bit target.
 
 Elaborating module <clk_s(delay_k=10000000)>.
@@ -188,7 +188,7 @@ Unit <top> synthesized.
 
 Synthesizing Unit <clk_s_1>.
     Related source file is "C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\seg7clk.v".
-        delay_k = 400000
+        delay_k = 40000
     Found 1-bit register for signal <sclk>.
     Found 27-bit register for signal <counter>.
     Found 27-bit adder for signal <counter[26]_GND_2_o_add_2_OUT> created at line 16.
@@ -291,10 +291,10 @@ Synthesizing Unit <ControlUnit>.
     Found 8-bit register for signal <state>.
     Found finite state machine <FSM_0> for signal <state>.
     -----------------------------------------------------------------------
-    | States             | 8                                              |
-    | Transitions        | 18                                             |
-    | Inputs             | 6                                              |
-    | Outputs            | 8                                              |
+    | States             | 12                                             |
+    | Transitions        | 27                                             |
+    | Inputs             | 7                                              |
+    | Outputs            | 12                                             |
     | Clock              | clk (falling_edge)                             |
     | Power Up State     | 00001111                                       |
     | Encoding           | auto                                           |
@@ -383,12 +383,12 @@ INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmet
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
-WARNING:Xst:1293 - FF/Latch <ALU_func_1> has a constant value of 0 in block <CU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <ALU_func_2> has a constant value of 0 in block <CU>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <ALU_func_3> has a constant value of 0 in block <CU>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <PC_inc> has a constant value of 0 in block <CU>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <PC_incc_0> has a constant value of 1 in block <CU>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <PC_incc_1> has a constant value of 0 in block <CU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <ALU_func_1> has a constant value of 0 in block <CU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <ALU_func_2> has a constant value of 0 in block <CU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <ALU_func_3> has a constant value of 0 in block <CU>. This FF/Latch will be trimmed during the optimization process.
 
 Synthesizing (advanced) Unit <clk_s_1>.
 The following registers are absorbed into counter <counter>: 1 register on signal <counter>.
@@ -458,19 +458,23 @@ WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ALU_func_1> has a c
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ALU_func_2> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ALU_func_3> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
 Analyzing FSM <MFsm> for best encoding.
-Optimizing FSM <cpu/CU/FSM_0> on signal <state[1:3]> with gray encoding.
-----------------------
+Optimizing FSM <cpu/CU/FSM_0> on signal <state[1:12]> with one-hot encoding.
+--------------------------
  State    | Encoding
-----------------------
- 00001111 | 000
- 00010000 | 001
- 00010001 | 011
- 00010010 | 010
- 00010011 | 110
- 00010100 | 111
- 00001110 | 101
- 11111111 | 100
-----------------------
+--------------------------
+ 00001111 | 000000000001
+ 00010000 | 000000000010
+ 00010001 | 000000000100
+ 00010010 | 000000001000
+ 00010011 | 000000010000
+ 00010100 | 000000100000
+ 00010101 | 000001000000
+ 00010110 | 000010000000
+ 00010111 | 000100000000
+ 00011000 | 001000000000
+ 00001110 | 010000000000
+ 11111111 | 100000000000
+--------------------------
 
 Optimizing unit <register_1> ...
 
@@ -485,12 +489,8 @@ Optimizing unit <CPU> ...
 Optimizing unit <ControlUnit> ...
 WARNING:Xst:1293 - FF/Latch <SR_incc_1> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cmd_w> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <SR_incc_0> has a constant value of 1 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <data_sel_1> has a constant value of 1 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cmd_w> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR_incc_0> has a constant value of 1 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR_incc_1> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <data_sel_1> has a constant value of 1 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <ALU> ...
 
@@ -500,7 +500,7 @@ WARNING:Xst:2677 - Node <cpu/alu/Mmult_n0017> of sequential type is unconnected 
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 98.
+Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 99.
 
 Final Macro Processing ...
 
@@ -508,8 +508,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 4264
- Flip-Flops                                            : 4264
+# Registers                                            : 4275
+ Flip-Flops                                            : 4275
 
 =========================================================================
 
@@ -532,25 +532,25 @@ Top Level Output File Name         : top.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 6472
+# BELS                             : 6497
 #      GND                         : 1
-#      INV                         : 5
+#      INV                         : 6
 #      LUT1                        : 68
-#      LUT2                        : 24
-#      LUT3                        : 23
-#      LUT4                        : 25
-#      LUT5                        : 4140
-#      LUT6                        : 1193
-#      MUXCY                       : 89
+#      LUT2                        : 25
+#      LUT3                        : 48
+#      LUT4                        : 32
+#      LUT5                        : 4144
+#      LUT6                        : 1175
+#      MUXCY                       : 94
 #      MUXF7                       : 545
 #      MUXF8                       : 272
 #      VCC                         : 1
 #      XORCY                       : 86
-# FlipFlops/Latches                : 4264
+# FlipFlops/Latches                : 4275
 #      FD                          : 37
-#      FD_1                        : 4
+#      FD_1                        : 12
 #      FDE                         : 4160
-#      FDE_1                       : 4
+#      FDE_1                       : 7
 #      FDR                         : 54
 #      FDR_1                       : 5
 # Clock Buffers                    : 2
@@ -566,15 +566,15 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            4264  out of  18224    23%  
- Number of Slice LUTs:                 5478  out of   9112    60%  
-    Number used as Logic:              5478  out of   9112    60%  
+ Number of Slice Registers:            4275  out of  18224    23%  
+ Number of Slice LUTs:                 5498  out of   9112    60%  
+    Number used as Logic:              5498  out of   9112    60%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   5505
-   Number with an unused Flip Flop:    1241  out of   5505    22%  
-   Number with an unused LUT:            27  out of   5505     0%  
-   Number of fully used LUT-FF pairs:  4237  out of   5505    76%  
+ Number of LUT Flip Flop pairs used:   5525
+   Number with an unused Flip Flop:    1250  out of   5525    22%  
+   Number with an unused LUT:            27  out of   5525     0%  
+   Number of fully used LUT-FF pairs:  4248  out of   5525    76%  
    Number of unique control sets:        12
 
 IO Utilization: 
@@ -607,7 +607,7 @@ Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
 clk                                | BUFGP                  | 56    |
 seg7_sclk/sclk                     | NONE(drv/counter_1)    | 2     |
-cpu_sclk/sclk                      | BUFG                   | 4206  |
+cpu_sclk/sclk                      | BUFG                   | 4217  |
 -----------------------------------+------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -619,7 +619,7 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 16.234ns (Maximum Frequency: 61.599MHz)
+   Minimum period: 15.660ns (Maximum Frequency: 63.859MHz)
    Minimum input arrival time before clock: No path found
    Maximum output required time after clock: 6.244ns
    Maximum combinational path delay: No path found
@@ -631,7 +631,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
   Clock period: 6.146ns (frequency: 162.699MHz)
-  Total number of paths / destination ports: 1878 / 110
+  Total number of paths / destination ports: 2410 / 110
 -------------------------------------------------------------------------
 Delay:               6.146ns (Levels of Logic = 4)
   Source:            cpu_sclk/counter_12 (FF)
@@ -677,40 +677,35 @@ Delay:               2.190ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'cpu_sclk/sclk'
-  Clock period: 16.234ns (frequency: 61.599MHz)
-  Total number of paths / destination ports: 2224114 / 8375
+  Clock period: 15.660ns (frequency: 63.859MHz)
+  Total number of paths / destination ports: 2298312 / 8389
 -------------------------------------------------------------------------
-Delay:               8.117ns (Levels of Logic = 16)
+Delay:               7.830ns (Levels of Logic = 11)
   Source:            cpu/CU/SR_inc (FF)
-  Destination:       mem/store_0_4095 (FF)
+  Destination:       mem/o0_15 (FF)
   Source Clock:      cpu_sclk/sclk falling
   Destination Clock: cpu_sclk/sclk rising
 
-  Data Path: cpu/CU/SR_inc to mem/store_0_4095
+  Data Path: cpu/CU/SR_inc to mem/o0_15
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDE_1:C->Q           18   0.447   1.050  cpu/CU/SR_inc (cpu/CU/SR_inc)
      LUT2:I1->O            1   0.205   0.000  cpu/SR_idc/Maddsub_o0_lut<0> (cpu/SR_idc/Maddsub_o0_lut<0>)
      MUXCY:S->O            1   0.172   0.000  cpu/SR_idc/Maddsub_o0_cy<0> (cpu/SR_idc/Maddsub_o0_cy<0>)
-     MUXCY:CI->O           1   0.019   0.000  cpu/SR_idc/Maddsub_o0_cy<1> (cpu/SR_idc/Maddsub_o0_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  cpu/SR_idc/Maddsub_o0_cy<2> (cpu/SR_idc/Maddsub_o0_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  cpu/SR_idc/Maddsub_o0_cy<3> (cpu/SR_idc/Maddsub_o0_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  cpu/SR_idc/Maddsub_o0_cy<4> (cpu/SR_idc/Maddsub_o0_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  cpu/SR_idc/Maddsub_o0_cy<5> (cpu/SR_idc/Maddsub_o0_cy<5>)
-     MUXCY:CI->O           1   0.019   0.000  cpu/SR_idc/Maddsub_o0_cy<6> (cpu/SR_idc/Maddsub_o0_cy<6>)
-     MUXCY:CI->O           1   0.019   0.000  cpu/SR_idc/Maddsub_o0_cy<7> (cpu/SR_idc/Maddsub_o0_cy<7>)
-     MUXCY:CI->O           1   0.019   0.000  cpu/SR_idc/Maddsub_o0_cy<8> (cpu/SR_idc/Maddsub_o0_cy<8>)
-     XORCY:CI->O           2   0.180   0.617  cpu/SR_idc/Maddsub_o0_xor<9> (cpu/SR_id<9>)
-     LUT6:I5->O            4   0.205   0.684  cpu/addr_mux/Mmux_o0161 (addr<9>)
-     LUT6:I5->O            1   0.205   0.000  mem/addr[15]_GND_13_o_LessThan_3_o1_SW0_SW0_G (N27)
-     MUXF7:I1->O          35   0.140   1.335  mem/addr[15]_GND_13_o_LessThan_3_o1_SW0_SW0 (N14)
-     LUT6:I5->O         1024   0.205   2.213  mem/addr[7]_addr[15]_AND_1003_o11 (mem/addr[7]_addr[15]_AND_1003_o1)
-     LUT5:I4->O            1   0.205   0.000  mem/mux406311 (mem/store[1][15]_i0[15]_mux_258_OUT<9>)
-     FDE:D                     0.102          mem/store_0_25
+     XORCY:CI->O           3   0.180   0.651  cpu/SR_idc/Maddsub_o0_xor<1> (cpu/SR_id<1>)
+     LUT6:I5->O         1026   0.205   2.214  cpu/addr_mux/Mmux_o081 (addr<1>)
+     LUT6:I5->O            1   0.205   0.000  mem/mux4095_113 (mem/mux4095_113)
+     MUXF7:I1->O           1   0.140   0.000  mem/mux4095_10_f7_1 (mem/mux4095_10_f72)
+     MUXF8:I1->O           1   0.152   0.827  mem/mux4095_9_f8_0 (mem/mux4095_9_f81)
+     LUT6:I2->O            1   0.203   0.000  mem/mux4095_4 (mem/mux4095_4)
+     MUXF7:I1->O           1   0.140   0.000  mem/mux4095_3_f7 (mem/mux4095_3_f7)
+     MUXF8:I1->O           1   0.152   0.580  mem/mux4095_2_f8 (mem/addr[7]_store[255][15]_wide_mux_261_OUT<9>)
+     LUT5:I4->O            1   0.205   0.000  mem/o0_9_rstpot (mem/o0_9_rstpot)
+     FD:D                      0.102          mem/o0_9
     ----------------------------------------
-    Total                      8.117ns (2.218ns logic, 5.899ns route)
-                                       (27.3% logic, 72.7% route)
+    Total                      7.830ns (2.508ns logic, 5.322ns route)
+                                       (32.0% logic, 68.0% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'seg7_sclk/sclk'
@@ -791,7 +786,7 @@ Clock to Setup on destination clock cpu_sclk/sclk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-cpu_sclk/sclk  |    8.324|    8.117|    4.600|         |
+cpu_sclk/sclk  |    7.573|    7.830|    4.207|         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock seg7_sclk/sclk
@@ -805,14 +800,14 @@ seg7_sclk/sclk |    2.190|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 31.00 secs
-Total CPU time to Xst completion: 31.34 secs
+Total REAL time to Xst completion: 33.00 secs
+Total CPU time to Xst completion: 33.38 secs
  
 --> 
 
-Total memory usage is 344980 kilobytes
+Total memory usage is 346004 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   37 (   0 filtered)
+Number of warnings :   33 (   0 filtered)
 Number of infos    :    6 (   0 filtered)
 

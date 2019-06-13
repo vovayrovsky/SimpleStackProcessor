@@ -12,7 +12,7 @@ module top(
     
 wire seg7clk;
     
-clk_s #(400000) seg7_sclk (clk, seg7clk);
+clk_s #(40000) seg7_sclk (clk, seg7clk);
 
 wire cpu_clk;
 

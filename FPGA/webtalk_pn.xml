@@ -3,10 +3,10 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pn" timeStamp="Thu Jun 13 21:43:11 2019">
+<application name="pn" timeStamp="Fri Jun 14 00:39:40 2019">
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="C323EDAAFB7D413CA4BB8E8A1067E4CE" type="project"/>
-<property name="ProjectIteration" value="18" type="project"/>
+<property name="ProjectIteration" value="20" type="project"/>
 <property name="ProjectFile" value="C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/FPGA.xise" type="project"/>
 <property name="ProjectCreationTimestamp" value="2019-06-05T23:02:35" type="project"/>
 </section>
@@ -17,7 +17,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="PROP_LastAppliedStrategy" value="Xilinx Default (unlocked)" type="design"/>
 <property name="PROP_ManualCompileOrderImp" value="false" type="design"/>
 <property name="PROP_PropSpecInProjFile" value="Store all values" type="design"/>
-<property name="PROP_SelectedInstanceHierarchicalPath" value="/testtop" type="process"/>
+<property name="PROP_SelectedInstanceHierarchicalPath" value="/testtop/uut" type="process"/>
 <property name="PROP_Simulator" value="ISim (VHDL/Verilog)" type="design"/>
 <property name="PROP_SynthTopFile" value="changed" type="process"/>
 <property name="PROP_Top_Level_Module_Type" value="HDL" type="design"/>
@@ -25,11 +25,11 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="PROP_UserConstraintEditorPreference" value="Text Editor" type="process"/>
 <property name="PROP_intProjectCreationTimestamp" value="2019-06-05T23:02:35" type="design"/>
 <property name="PROP_intWbtProjectID" value="C323EDAAFB7D413CA4BB8E8A1067E4CE" type="design"/>
-<property name="PROP_intWbtProjectIteration" value="18" type="process"/>
+<property name="PROP_intWbtProjectIteration" value="20" type="process"/>
 <property name="PROP_intWorkingDirLocWRTProjDir" value="Same" type="design"/>
 <property name="PROP_intWorkingDirUsed" value="No" type="design"/>
 <property name="PROP_lockPinsUcfFile" value="changed" type="process"/>
-<property name="PROP_selectedSimRootSourceNode_behav" value="work.testtop" type="process"/>
+<property name="PROP_selectedSimRootSourceNode_behav" value="work.top" type="process"/>
 <property name="PROP_xilxBitgStart_IntDone" value="true" type="process"/>
 <property name="PROP_AutoTop" value="false" type="design"/>
 <property name="PROP_DevFamily" value="Spartan6" type="design"/>
