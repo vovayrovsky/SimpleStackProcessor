@@ -46,6 +46,8 @@
 `define MOV_LKR2_S  8'h13
 `define MOV_S       8'h14
 
+`define HLT_S       8'hFF
+
 //------------------------------------------------------------------------------------------------
 //Some constants
 `define ADDR_SR   2'd0
@@ -121,9 +123,10 @@ always@ (negedge clk)
         
         `GET_CMD_S:     case (opcode)
                   
-                        `PUSH: state <= `PUSH_S;
-                        `MOV:  state <= `MOV_LDR1_S;
-                    
+                        `PUSH:  state <= `PUSH_S;
+                        `MOV:   state <= `MOV_LDR1_S;
+                        `HLT:   state <= `HLT_S;
+                        
                         endcase
         
         `PUSH_S:        state <= `PC_INC_S;
@@ -135,6 +138,9 @@ always@ (negedge clk)
         
         `PC_INC_S:  state <= `GET_CMD_S;
         
+        `HLT_S: state <= `HLT_S;    
+        
+        default: state <= `HLT_S;
         
         endcase
         
@@ -238,6 +244,12 @@ always@ (negedge clk)
                     addr_sel <= `ADDR_PC;
         
                     end
+                    
+        `HLT_S: begin
+        
+                error <= 1;
+        
+                end
                
         endcase
 
