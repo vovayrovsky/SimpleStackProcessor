@@ -65,10 +65,12 @@ void Board :: Start()
             else if (tolower(key) == 'a')
                 {
                 printf ("\nStack map:\n");
-                for (uint16_t i = 0xFFFF-0x100; i < 0xFFFF; i++)
+                for (uint16_t i = 0xFFFF-0xFF; i <= 0xFFFF; i++)
                     {
                     printf ("%x\t", store[i]);
                     if (i % 8 == 7) printf ("\n");
+
+                    if (i == 0xFFFF) break;
                     }
 
                 printf ("\n");

@@ -19,7 +19,7 @@ class CPU
         CPU():
             wint_flag (false),
             PC (ENTRY_POINT),
-            SR (STACK_START_POINT)
+            SR (STACK_START_POINT + 1)
             {}
 
     bool CLK (uint16_t* mem);
