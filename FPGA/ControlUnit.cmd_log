@@ -1,0 +1,4 @@
+xst -intstyle ise -ifn "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/ControlUnit.xst" -ofn "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/ControlUnit.syr" 
+xst -intstyle ise -ifn "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/ControlUnit.xst" -ofn "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/ControlUnit.syr" 
+xst -intstyle ise -ifn "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/ControlUnit.xst" -ofn "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/ControlUnit.syr" 
+xst -intstyle ise -ifn "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/ControlUnit.xst" -ofn "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/ControlUnit.syr" 

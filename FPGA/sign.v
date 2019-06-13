@@ -10,7 +10,8 @@ module incdec(
 always@(*)
     begin
     
-    o0 = i0 + dir? -1 : 1;
+    if (dir) o0 = i0 - 1;
+    else     o0 = i0 + 1;
     
     end
 

@@ -1,6 +1,8 @@
 `timescale 1ns / 1ps
 
-module register(
+module register#(
+    parameter start_value = 0
+    )(
     input wire clk,
     
     input wire we,
@@ -20,7 +22,7 @@ always@ (posedge clk)
 initial
     begin
     
-    out = 0;
+    out = start_value;
     
     end
 

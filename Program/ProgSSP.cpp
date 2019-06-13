@@ -15,30 +15,28 @@ int main(int argc, char** argv)
     printf ("SSP version: " VERS "\n"
             "Load file: %s\n", argv[1]);
 
-    FILE* fin = fopen (argv[1], "rt");
+    FILE* fin = fopen (argv[1], "r");
     assert (fin);
 
     Board brd;
 
-    uint16_t dump_len = 0;
     char buf = 0;
-    fscanf (fin, "%c%c", &dump_len, &buf);
-    dump_len = dump_len << 8 | buf;
 
-    if (dump_len == 0) return -1;
+    printf ("Loading program\n");
 
-    printf ("Program len: %d\nLoading program\n", dump_len);
-    for (uint16_t i = 0; i < dump_len; i++)
+    uint16_t len = 0;
+
+    for (len = 0; !feof(fin); len++)
         {
+        fscanf (fin, "%c%c", &(brd.store[len]), &buf);
 
-        fscanf (fin, "%c%c", &(brd.store[i]), &buf);
-        brd.store[i] = brd.store[i] << 8 | buf;
+        brd.store[len] = brd.store[len] << 8 | buf;
         }
 
     fclose (fin);
 
     printf ("\nInitial memory map:\n");
-    for (uint16_t i = 0; i < dump_len; i++)
+    for (uint16_t i = 0; i < len; i++)
         {
         printf ("%x\t", brd.store[i]);
         if (i % 8 == 7) printf ("\n");

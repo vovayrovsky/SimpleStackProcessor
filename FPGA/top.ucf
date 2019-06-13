@@ -1,0 +1,21 @@
+
+# PlanAhead Generated physical constraints 
+NET "clk" LOC = V10;
+NET "an[3]" LOC = P17;
+NET "an[2]" LOC = P18;
+NET "an[1]" LOC = N15;
+NET "an[0]" LOC = N16;
+NET "cat[7]" LOC = T17;
+NET "cat[6]" LOC = T18;
+NET "cat[5]" LOC = U17;
+NET "cat[4]" LOC = U18;
+NET "cat[3]" LOC = M14;
+NET "cat[2]" LOC = N14;
+NET "cat[1]" LOC = L14;
+NET "cat[0]" LOC = M13;
+NET "cpu_clk" LOC = T11;
+#Created by Constraints Editor (xc6slx16-csg324-3) - 2019/06/13
+NET "clk" TNM_NET = clk;
+TIMESPEC TS_clk = PERIOD "clk" 100 MHz LOW 50%;
+NET "cpu_sclk/sclk" TNM_NET = cpu_sclk/sclk;
+TIMESPEC TS_cpu_sclk_sclk = PERIOD "cpu_sclk/sclk" 100 KHz LOW 50%;
