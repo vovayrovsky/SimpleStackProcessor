@@ -1,7 +1,9 @@
 `timescale 1ns / 1ps
 
+`define MEM_SIZE 16'h0100
+
 module memory#(
-    parameter VIEW_PORT = 16'b10
+    parameter VIEW_PORT = 16'h10
     )(
     input wire clk,
     
@@ -16,7 +18,7 @@ module memory#(
     output wire [15 : 0] port
     );
 
-reg [15 : 0] store [16'hFFFF : 0];
+reg [15 : 0] store [`MEM_SIZE - 1 : 0];
 reg [15 : 0] old_addr;
 
 assign port = store [VIEW_PORT];
@@ -53,7 +55,7 @@ integer i;
 initial
     begin
 
-    for (i = 0; i < 17'h1000; i = i+1)
+    for (i = 0; i < `MEM_SIZE; i = i+1)
         store[i] = 0;
 
     $readmemh("P:/input.mem", store);

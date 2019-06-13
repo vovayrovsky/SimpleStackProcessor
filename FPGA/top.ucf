@@ -13,8 +13,9 @@ NET "cat[3]" LOC = M14;
 NET "cat[2]" LOC = N14;
 NET "cat[1]" LOC = L14;
 NET "cat[0]" LOC = M13;
-#Created by Constraints Editor (xc6slx16-csg324-3) - 2019/06/12
+NET "cpu_clk" LOC = T11;
+#Created by Constraints Editor (xc6slx16-csg324-3) - 2019/06/13
 NET "clk" TNM_NET = clk;
 TIMESPEC TS_clk = PERIOD "clk" 100 MHz LOW 50%;
-NET "sclk/sclk" TNM_NET = sclk/sclk;
-#>DISABLED<#TIMESPEC TS_sclk_sclk = PERIOD "sclk/sclk" TS_clk / 400000 HIGH 50%;
+NET "cpu_sclk/sclk" TNM_NET = cpu_sclk/sclk;
+TIMESPEC TS_cpu_sclk_sclk = PERIOD "cpu_sclk/sclk" 100 KHz LOW 50%;

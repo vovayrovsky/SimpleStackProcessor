@@ -1,11 +1,8 @@
 `timescale 1ns / 1ps
 
-//Input freq:   100 MHz
-//Output freq:  1 Hz
-//
-//divider k: 400000
-
-module seg7clk_s (
+module clk_s #(
+    parameter delay_k = 2
+    )(
     input wire clk,
     output reg sclk
     );
@@ -15,7 +12,7 @@ reg [26 : 0] counter;
 always@ (posedge clk)
     begin
     
-    if (counter < 100000)
+    if (counter < delay_k)
         counter <= counter + 1;
     else
         begin

@@ -170,14 +170,25 @@ always@ (negedge clk)
                             SR_incc  <= `SR_ID;
                             
                             memory_w <= 1;
-                            cmd_w    <= 1;
+                            
+                            cmd_w <= 0;
+                            R1_w <= 0;
+                            R2_w <= 0;
+                            SR_w <= 0;
+                            PC_w <= 0;
                             
                             end
                             
                     `MOV:   begin
                                 
-                            addr_sel    <= `ADDR_SR;
-                            cmd_w       <= 1;
+                            addr_sel    <= `ADDR_SR;                    
+                                        
+                            cmd_w <= 0;
+                            R1_w <= 0;
+                            R2_w <= 0;
+                            SR_w <= 0;
+                            PC_w <= 0;
+                            memory_w <= 0;
                     
                             end
                             
@@ -194,6 +205,11 @@ always@ (negedge clk)
                     PC_inc  <= `IDC_INC;
                     PC_incc <= `PC_ID;
                     PC_w    <= 1;
+                    
+                    cmd_w <= 0;
+                    R1_w <= 0;
+                    R2_w <= 0;
+                    memory_w <= 0;
         
                     end
                
@@ -207,6 +223,12 @@ always@ (negedge clk)
                         SR_incc     <= `SR_ID;
                         
                         R1_w        <= 1;
+                                        
+                        cmd_w <= 0;
+                        R2_w <= 0;
+                        SR_w <= 0;
+                        PC_w <= 0;
+                        memory_w <= 0;
                         
                         end
                         
@@ -214,6 +236,11 @@ always@ (negedge clk)
                         
                         SR_w        <= 1;
                         R2_w        <= 1;
+                                                
+                        cmd_w <= 0;
+                        R1_w <= 0;
+                        PC_w <= 0;
+                        memory_w <= 0;
                         
                         end
                  
@@ -225,7 +252,13 @@ always@ (negedge clk)
                         ALU_func    <= `R2_alu;
 
                         memory_w    <= 1;
-                        
+                                    
+                        cmd_w <= 0;
+                        R1_w <= 0;
+                        R2_w <= 0;
+                        SR_w <= 0;
+                        PC_w <= 0;
+
                         end
                  
         `MOV_S:         begin
@@ -233,7 +266,13 @@ always@ (negedge clk)
                         PC_inc  <= `IDC_INC;
                         PC_incc <= `PC_ID;
                         PC_w    <= 1;
-                        
+                                        
+                        cmd_w <= 0;
+                        R1_w <= 0;
+                        R2_w <= 0;
+                        SR_w <= 0;
+                        memory_w <= 0;
+
                         end
 
 //------------------------------------------------------------------------------------------------
@@ -242,24 +281,51 @@ always@ (negedge clk)
         `PC_INC_S:  begin
         
                     addr_sel <= `ADDR_PC;
+                                
+                    cmd_w <= 0;
+                    R1_w <= 0;
+                    R2_w <= 0;
+                    SR_w <= 0;
+                    PC_w <= 0;
+                    memory_w <= 0;
         
                     end
                     
         `HLT_S: begin
         
-                error <= 1;
+                error <= 1;        
+                        
+                cmd_w <= 0;
+                R1_w <= 0;
+                R2_w <= 0;
+                SR_w <= 0;
+                PC_w <= 0;
+                memory_w <= 0;
         
                 end
                
         endcase
 
         end
-    
+    else
+        begin
+        
+        cmd_w <= 0;
+        R1_w <= 0;
+        R2_w <= 0;
+        SR_w <= 0;
+        PC_w <= 0;
+        memory_w <= 0;
+        
+        end
     end
 
 //------------------------------------------------------------------------------------------------
 //Write signals' reset
+/*
 
+
+        
 always@ (negedge clk)
     begin
     
@@ -281,7 +347,7 @@ always@ (negedge clk)
     if (memory_w)
         memory_w <= 0;
         
-    end
+    end*/
     
 //------------------------------------------------------------------------------------------------
 //Initial

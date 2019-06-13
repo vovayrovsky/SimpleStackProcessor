@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-`define STACK_START_POINT 16'hFFFE
+`define STACK_START_POINT 16'h00FE
 `define ENTRY_POINT       16'h0020
 
 module CPU(
@@ -85,7 +85,6 @@ ControlUnit CU(
             .clk            (clk),
             .opcode         (opcode),
             .memory_ready   (memory_ready),
-            .cmd_w          (cmd_w),
             .R1_w           (R1_w),
             .R2_w           (R2_w),
             .SR_w           (SR_w),
