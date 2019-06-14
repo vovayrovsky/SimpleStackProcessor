@@ -58,7 +58,7 @@ initial
     for (i = 0; i < `MEM_SIZE; i = i+1)
         store[i] = 0;
 
-    $readmemh("P:/psr.mem", store);
+    $readmemh("P:/fibonachi.mem", store);
     
     o0 = store [0];
     old_addr = 0;

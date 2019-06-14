@@ -71,6 +71,9 @@
 
 `define PSR_S           8'h26
 
+`define JMP_LDPC_S      8'h27
+`define JMP_LKPC_S      8'h28
+
 `define HLT_S           8'hFF
 
 //------------------------------------------------------------------------------------------------
@@ -159,6 +162,8 @@ always@ (negedge clk)
                         `SUB:   state <= `SUB_LDR2_S;
                         `MSR:   state <= `MSR_LDSR_S;
                         `PSR:   state <= `PSR_S;
+                        `JMP:   state <= `JMP_LDPC_S;
+                        
                         endcase
         
         `PUSH_S:        state <= `PC_INC_S;
@@ -193,11 +198,14 @@ always@ (negedge clk)
         
         `PSR_S:         state <= `PC_INC_S;
         
-        `PC_INC_S:  state <= `GET_CMD_S;
+        `JMP_LDPC_S:    state <= `JMP_LKPC_S;
+        `JMP_LKPC_S:    state <= `PC_INC_S;
         
-        `HLT_S: state <= `HLT_S;    
+        `PC_INC_S:      state <= `GET_CMD_S;
         
-        default: state <= `HLT_S;
+        `HLT_S:         state <= `HLT_S;    
+        
+        default:        state <= `HLT_S;
         
         endcase
         
@@ -342,6 +350,19 @@ always@ (negedge clk)
                             PC_w        <= 0;
                             memory_w    <= 1;
                     
+                            end
+                          
+                    `JMP:   begin
+                            
+                            addr_sel    <= `ADDR_SR;                    
+                                        
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
+
                             end
                           
                     endcase
@@ -693,7 +714,7 @@ always@ (negedge clk)
                         end
 
 //------------------------------------------------------------------------------------------------
-//End of all branches
+//PSR branch
 
         `PSR_S: begin
         
@@ -709,6 +730,35 @@ always@ (negedge clk)
         
                 end
 
+//------------------------------------------------------------------------------------------------
+//JMP branch
+
+        `JMP_LDPC_S:    begin
+        
+                        PC_incc     <= `PC_IMM;
+                        PC_w        <= 1;
+
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        memory_w    <= 0;
+                
+                        end
+        
+        `JMP_LKPC_S:    begin
+            
+                        SR_inc      <= `IDC_INC;
+                        SR_incc     <= `SR_ID;
+                        
+                        SR_w        <= 1;
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+                
+                        end    
 
 //------------------------------------------------------------------------------------------------
 //End of all branches
