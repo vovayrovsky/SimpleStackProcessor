@@ -53,10 +53,14 @@
 
 `define POP_S           8'h19
 
+`define DUP_LDR1_S      8'h1A
+`define DUP_P1_S        8'h1B
+
 `define HLT_S           8'hFF
 
 //------------------------------------------------------------------------------------------------
 //Some constants
+
 `define ADDR_SR   2'd0
 `define ADDR_SRI  2'd1
 `define ADDR_PC   2'd2
@@ -135,6 +139,8 @@ always@ (negedge clk)
                         `HLT:   state <= `HLT_S;
                         `SWAP:  state <= `SWAP_LDR1_S;
                         `POP:   state <= `POP_S;
+                        `DUP:   state <= `DUP_LDR1_S;
+                        
                         endcase
         
         `PUSH_S:        state <= `PC_INC_S;
@@ -150,6 +156,9 @@ always@ (negedge clk)
         `SWAP_P2_S:     state <= `PC_INC_S;
         
         `POP_S:         state <= `PC_INC_S;
+        
+        `DUP_LDR1_S:    state <= `DUP_P1_S;
+        `DUP_P1_S:      state <= `PC_INC_S;               
         
         `PC_INC_S:  state <= `GET_CMD_S;
         
@@ -232,7 +241,20 @@ always@ (negedge clk)
                             PC_w        <= 0;
                     
                             end
+                        
+                    `DUP:   begin
                             
+                            addr_sel    <= `ADDR_SR;
+                                    
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
+                    
+                            end
+                        
                     endcase
         
 
@@ -394,6 +416,42 @@ always@ (negedge clk)
                     memory_w    <= 0;
         
                     end
+
+//------------------------------------------------------------------------------------------------
+//Dup branch
+
+        `DUP_LDR1_S:    begin
+
+                        addr_sel    <= `ADDR_SRI;
+                        data_sel    <= `DATA_ALU;
+                        
+                        SR_inc      <= `IDC_DEC;
+                        SR_incc     <= `SR_ID;
+                        
+                        ALU_func    <= `ALU_R1;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 1;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+
+                        end
+                        
+        `DUP_P1_S:      begin
+                    
+                        PC_inc      <= `IDC_INC;
+                        PC_incc     <= `PC_ID;
+                        PC_w        <= 1;
+
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 1;
+                        memory_w    <= 1;
+
+                        end
 
 //------------------------------------------------------------------------------------------------
 //End of all branches

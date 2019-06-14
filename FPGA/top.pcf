@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Jun 14 09:48:27 2019
+// Written by: Map P.20131013 on Fri Jun 14 10:41:05 2019
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -67,8 +67,14 @@ TIMEGRP cpu_sclk/sclk = BEL "cpu/R1/out_0" BEL "cpu/R1/out_1" BEL
         "cpu/PC/out_4" BEL "cpu/PC/out_3" BEL "cpu/PC/out_2" BEL
         "cpu/PC/out_1" BEL "cpu/PC/out_0" BEL "cpu/CU/state_FSM_FFd1" BEL
         "cpu/CU/state_FSM_FFd2" BEL "cpu/CU/state_FSM_FFd4" BEL
-        "cpu/CU/state_FSM_FFd3" BEL "cpu/CU/ALU_func_0" BEL "cpu/CU/SR_inc"
-        BEL "cpu/CU/data_sel_0" BEL "cpu/CU/addr_sel_1" BEL
+        "cpu/CU/state_FSM_FFd5" BEL "cpu/CU/state_FSM_FFd3" BEL
+        "cpu/CU/state_FSM_FFd6" BEL "cpu/CU/state_FSM_FFd7" BEL
+        "cpu/CU/state_FSM_FFd9" BEL "cpu/CU/state_FSM_FFd10" BEL
+        "cpu/CU/state_FSM_FFd8" BEL "cpu/CU/state_FSM_FFd11" BEL
+        "cpu/CU/state_FSM_FFd12" BEL "cpu/CU/state_FSM_FFd14" BEL
+        "cpu/CU/state_FSM_FFd15" BEL "cpu/CU/state_FSM_FFd13" BEL
+        "cpu/CU/ALU_func_0" BEL "cpu/CU/SR_inc" BEL "cpu/CU/data_sel_1" BEL
+        "cpu/CU/data_sel_0" BEL "cpu/CU/SR_incc_0" BEL "cpu/CU/addr_sel_1" BEL
         "cpu/CU/addr_sel_0" BEL "cpu/CU/SR_w" BEL "cpu/CU/R2_w" BEL
         "cpu/CU/PC_w" BEL "cpu/CU/memory_w" BEL "cpu/CU/R1_w" BEL
         "mem/store_0_4095" BEL "mem/store_0_4094" BEL "mem/store_0_4093" BEL

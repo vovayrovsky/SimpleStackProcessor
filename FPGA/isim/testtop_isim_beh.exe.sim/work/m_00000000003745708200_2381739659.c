@@ -26,7 +26,7 @@ static unsigned int ng1[] = {16U, 0U};
 static int ng2[] = {0, 0};
 static int ng3[] = {1, 0};
 static unsigned int ng4[] = {256U, 0U};
-static const char *ng5 = "P:/input.mem";
+static const char *ng5 = "P:/pop.mem";
 
 
 
@@ -407,8 +407,10 @@ LAB4:    t7 = (t4 + 4);
     if (*((unsigned int *)t7) != 0)
         goto LAB5;
 
-LAB8:    if (*((unsigned int *)t3) < *((unsigned int *)t4))
-        goto LAB6;
+LAB8:    if (*((unsigned int *)t3) > *((unsigned int *)t4))
+        goto LAB7;
+
+LAB6:    *((unsigned int *)t5) = 1;
 
 LAB7:    t9 = (t5 + 4);
     t10 = *((unsigned int *)t9);
@@ -449,9 +451,6 @@ LAB1:    return;
 LAB5:    t8 = (t5 + 4);
     *((unsigned int *)t5) = 1;
     *((unsigned int *)t8) = 1;
-    goto LAB7;
-
-LAB6:    *((unsigned int *)t5) = 1;
     goto LAB7;
 
 LAB9:    xsi_set_current_line(59, ng0);

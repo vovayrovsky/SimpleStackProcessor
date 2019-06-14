@@ -12,3 +12,125 @@ Finished circuit initialization process.
 # run all
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# restart
+# run all
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# restart
+# run all
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# restart
+# step
+Simulator is doing circuit initialization process.
+Stopped at time : 0 fs : File "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/seg7clk.v" Line 12
+# step
+Stopped at time : 0 fs : File "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/register.v" Line 14
+# step
+Stopped at time : 0 fs : File "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/register.v" Line 14
+# run 1.00us
+Finished circuit initialization process.
+# restart
+# run 1.00ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run 1.00ns
+# restart
+# run all
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# restart
+# run 1.00ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run 1.00ns
+# run 1.00ns
+# restart
+# run 1.00ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run 1.00ns
+# run 1.00ns
+# restart
+# run 1.00ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# restart
+# run 22.00ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+# run 1.00ns
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# restart
+# run 32.00ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run 2.00ns
+# run 2.00ns
+# run 2.00ns
+# run 2.00ns
+# run 2.00ns
+# run 2.00ns
+# run 2.00ns
+# run 2.00ns
+ISim P.20131013 (signature 0x7708f090)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.

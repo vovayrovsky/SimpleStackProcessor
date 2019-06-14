@@ -7,8 +7,7 @@ module top(
     output wire [7 : 0] cat,
     
     output cpu_clk
-    );  
-    
+    );    
     
 wire seg7clk;
     
