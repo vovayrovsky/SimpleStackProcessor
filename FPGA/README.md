@@ -2,7 +2,7 @@
 
 Here are all the Xilinx ISE project files.
 
-##Files with hardware code
+## Files with hardware code
 
 [top.v](top.v) 					- top level module defenition
  
