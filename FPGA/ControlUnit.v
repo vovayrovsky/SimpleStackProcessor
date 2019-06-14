@@ -61,6 +61,11 @@
 `define ADD_LKR2_S      8'h1E
 `define ADD_P1_S        8'h1F
 
+`define SUB_LDR2_S      8'h20
+`define SUB_LDR1_S      8'h21
+`define SUB_LKR1_S      8'h22
+`define SUB_P1_S        8'h23
+
 `define HLT_S           8'hFF
 
 //------------------------------------------------------------------------------------------------
@@ -146,6 +151,7 @@ always@ (negedge clk)
                         `POP:   state <= `POP_S;
                         `DUP:   state <= `DUP_LDR1_S;
                         `ADD:   state <= `ADD_LDR1_S;
+                        `SUB:   state <= `SUB_LDR2_S;
                         
                         endcase
         
@@ -170,6 +176,11 @@ always@ (negedge clk)
         `ADD_LDR2_S:    state <= `ADD_LKR2_S;
         `ADD_LKR2_S:    state <= `ADD_P1_S;
         `ADD_P1_S:      state <= `PC_INC_S;
+        
+        `SUB_LDR2_S:    state <= `SUB_LDR1_S;
+        `SUB_LDR1_S:    state <= `SUB_LKR1_S;
+        `SUB_LKR1_S:    state <= `SUB_P1_S;
+        `SUB_P1_S:      state <= `PC_INC_S;
         
         `PC_INC_S:  state <= `GET_CMD_S;
         
@@ -279,6 +290,19 @@ always@ (negedge clk)
                             
                             end
                         
+                    `SUB:   begin
+                    
+                            addr_sel    <= `ADDR_SR;                    
+                                        
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
+                            
+                            end
+                            
                     endcase
         
 
@@ -536,6 +560,67 @@ always@ (negedge clk)
                         memory_w    <= 0;
     
                         end
+
+//------------------------------------------------------------------------------------------------
+//Sub branch
+
+        `SUB_LDR2_S:    begin
+        
+                        addr_sel    <= `ADDR_SRI;
+                        SR_inc      <= `IDC_INC;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 1;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+                        
+                        end
+                        
+        `SUB_LDR1_S:    begin
+                        
+                        R1_w        <= 1;
+                        R2_w        <= 0;
+                        cmd_w       <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+                        
+                        end
+                        
+        `SUB_LKR1_S:    begin
+
+                        data_sel    <= `DATA_ALU;
+                        
+                        SR_inc      <= `IDC_INC;
+                        SR_incc     <= `SR_ID;
+                        
+                        ALU_func    <= `SUB_alu;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 1;
+                        PC_w        <= 0;
+                        memory_w    <= 1;
+    
+                        end
+                        
+        `SUB_P1_S:      begin
+
+                        PC_inc      <= `IDC_INC;
+                        PC_incc     <= `PC_ID;
+                        PC_w        <= 1;
+
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        memory_w    <= 0;
+    
+                        end
+
 //------------------------------------------------------------------------------------------------
 //End of all branches
                        

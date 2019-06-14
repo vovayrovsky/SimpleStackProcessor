@@ -25,7 +25,7 @@ static const char *ng0 = "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProc
 
 
 
-static void Cont_19_0(char *t0)
+static void Cont_17_0(char *t0)
 {
     char *t1;
     char *t2;
@@ -51,7 +51,7 @@ LAB0:    t1 = (t0 + 3968U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(19, ng0);
+LAB2:    xsi_set_current_line(17, ng0);
     t2 = (t0 + 1048U);
     t3 = *((char **)t2);
     t2 = (t0 + 4368);
@@ -82,7 +82,7 @@ LAB1:    return;
 
 extern void work_m_00000000003206446824_3823007873_init()
 {
-	static char *pe[] = {(void *)Cont_19_0};
+	static char *pe[] = {(void *)Cont_17_0};
 	xsi_register_didat("work_m_00000000003206446824_3823007873", "isim/testtop_isim_beh.exe.sim/work/m_00000000003206446824_3823007873.didat");
 	xsi_register_executes(pe);
 }

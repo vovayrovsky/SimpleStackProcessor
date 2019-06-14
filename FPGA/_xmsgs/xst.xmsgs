@@ -5,9 +5,6 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="751" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\top.v" Line 16: Redeclaration of ansi port <arg fmt="%s" index="1">cpu_clk</arg> is not allowed
-</msg>
-
 <msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\seg7clk.v" Line 16: Result of <arg fmt="%d" index="1">28</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">27</arg>-bit target.
 </msg>
 
@@ -32,7 +29,7 @@
 <msg type="warning" file="HDLCompiler" num="634" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v" Line 24: Net &lt;<arg fmt="%s" index="1">cmd_w</arg>&gt; does not have a driver.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\top.v" Line 30: Assignment to <arg fmt="%s" index="1">error</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\top.v" Line 28: Assignment to <arg fmt="%s" index="1">error</arg> ignored, since the identifier is never used
 </msg>
 
 <msg type="warning" file="HDLCompiler" num="1670" delta="old" >"C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\memory.v" Line 61: Signal &lt;<arg fmt="%s" index="1">store</arg>&gt; in initial block is partially initialized.
@@ -47,7 +44,7 @@
 <msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v</arg>&quot; line <arg fmt="%d" index="2">37</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">cmd</arg>&gt; of block &lt;<arg fmt="%s" index="4">register</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">CPU</arg>&gt;. Underlying logic will be removed.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\top.v</arg>&quot; line <arg fmt="%s" index="2">30</arg>: Output port &lt;<arg fmt="%s" index="3">error</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">cpu</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\top.v</arg>&quot; line <arg fmt="%s" index="2">28</arg>: Output port &lt;<arg fmt="%s" index="3">error</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">cpu</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\KekKuLe\Desktop\temp\Code\SSP\SimpleStackProcessor\FPGA\CPU.v</arg>&quot; line <arg fmt="%s" index="2">37</arg>: Output port &lt;<arg fmt="%s" index="3">out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">cmd</arg>&gt; is unconnected or connected to loadless signal.
