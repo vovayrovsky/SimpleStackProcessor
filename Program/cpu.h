@@ -101,7 +101,7 @@ bool CPU :: CLK (uint16_t* mem)
 
         case MOV:
             assert (SR + 1 < MEMORY_SIZE);
-            assert (mem[SR + 1] < MEMORY_SIZE);
+            assert (mem[SR] < MEMORY_SIZE);
             mem[mem[SR]] = mem[SR + 1];
             STK_POP();
             break;

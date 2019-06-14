@@ -18,7 +18,7 @@
 
 `define MOV  6'h30   //0xC0 +
 `define MSR  6'h31   //0xC4 +
-`define PSR  6'h32   //0xC8 -
+`define PSR  6'h32   //0xC8 +
 `define PPC  6'h33   //0xCC
 
 `define WINT 6'h3E   //0xF8
@@ -68,6 +68,8 @@
 
 `define MSR_LDSR_S      8'h24
 `define MSR_LKSR_S      8'h25
+
+`define PSR_S           8'h26
 
 `define HLT_S           8'hFF
 
@@ -156,7 +158,7 @@ always@ (negedge clk)
                         `ADD:   state <= `ADD_LDR1_S;
                         `SUB:   state <= `SUB_LDR2_S;
                         `MSR:   state <= `MSR_LDSR_S;
-
+                        `PSR:   state <= `PSR_S;
                         endcase
         
         `PUSH_S:        state <= `PC_INC_S;
@@ -188,6 +190,8 @@ always@ (negedge clk)
 
         `MSR_LDSR_S:    state <= `MSR_LKSR_S;
         `MSR_LKSR_S:    state <= `PC_INC_S;
+        
+        `PSR_S:         state <= `PC_INC_S;
         
         `PC_INC_S:  state <= `GET_CMD_S;
         
@@ -322,7 +326,24 @@ always@ (negedge clk)
                             memory_w    <= 0;
                     
                             end
+                          
+                    `PSR:   begin
                             
+                            addr_sel    <= `ADDR_SRI;
+                            data_sel    <= `DATA_SR;
+                                        
+                            SR_inc      <= `IDC_DEC;
+                            SR_incc     <= `SR_ID;
+                                        
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 1;
+                            PC_w        <= 0;
+                            memory_w    <= 1;
+                    
+                            end
+                          
                     endcase
         
 
@@ -670,6 +691,24 @@ always@ (negedge clk)
                         memory_w    <= 0;
                         
                         end
+
+//------------------------------------------------------------------------------------------------
+//End of all branches
+
+        `PSR_S: begin
+        
+                PC_inc      <= `IDC_INC;
+                PC_incc     <= `PC_ID;
+                PC_w        <= 1;
+
+                cmd_w       <= 0;
+                R1_w        <= 0;
+                R2_w        <= 0;
+                SR_w        <= 0;
+                memory_w    <= 0;
+        
+                end
+
 
 //------------------------------------------------------------------------------------------------
 //End of all branches
