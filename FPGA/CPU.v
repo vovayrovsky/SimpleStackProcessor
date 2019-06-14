@@ -62,8 +62,8 @@ incdec PC_idc (PC_inc, PC_out, PC_id);
 wire [1 : 0] SR_incc;
 wire [1 : 0] PC_incc;
 
-mux4 sr_mux (SR_incc, ALU_res, SR_id, `STACK_START_POINT, 16'h0, SR_in);
-mux4 pc_mux (PC_incc, ALU_res, PC_id, `ENTRY_POINT,       16'h0, PC_in);
+mux4 sr_mux (SR_incc, ALU_res, SR_id, `STACK_START_POINT, in_data, SR_in);
+mux4 pc_mux (PC_incc, ALU_res, PC_id, `ENTRY_POINT,       in_data, PC_in);
 
 //------------------------------------------------------------------------------
 

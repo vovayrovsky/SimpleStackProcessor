@@ -3,26 +3,26 @@
 //------------------------------------------------------------------------------------------------
 //Opcodes
 
-`define PUSH 6'h0    //0x00
-`define POP  6'h1    //0x04
-`define DUP  6'h2    //0x08
-`define SWAP 6'h3    //0x0C
+`define PUSH 6'h0    //0x00 +
+`define POP  6'h1    //0x04 +
+`define DUP  6'h2    //0x08 +
+`define SWAP 6'h3    //0x0C +
 
-`define JMP  6'h10   //0x40
+`define JMP  6'h10   //0x40 -
 `define JE   6'h11   //0x44
 
-`define ADD  6'h20   //0x80
-`define SUB  6'h21   //0x84
+`define ADD  6'h20   //0x80 +
+`define SUB  6'h21   //0x84 +
 `define MUL  6'h22   //0x88
 `define DIV  6'h23   //0x8C
 
-`define MOV  6'h30   //0xC0
-`define MSR  6'h31   //0xC4
-`define PSR  6'h32   //0xC8
+`define MOV  6'h30   //0xC0 +
+`define MSR  6'h31   //0xC4 +
+`define PSR  6'h32   //0xC8 +
 `define PPC  6'h33   //0xCC
 
 `define WINT 6'h3E   //0xF8
-`define HLT  6'h3F   //0xFC
+`define HLT  6'h3F   //0xFC +
 
 //------------------------------------------------------------------------------------------------
 //ALU func
@@ -36,20 +36,49 @@
 
 //------------------------------------------------------------------------------------------------
 //States
-`define PC_INC_S    8'h0E  
-`define GET_CMD_S   8'h0F
+`define PC_INC_S        8'h0E  
+`define GET_CMD_S       8'h0F
 
-`define PUSH_S      8'h10
+`define PUSH_S          8'h10
 
-`define MOV_LDR1_S  8'h11
-`define MOV_LDR2_S  8'h12
-`define MOV_LKR2_S  8'h13
-`define MOV_S       8'h14
+`define MOV_LDR1_S      8'h11
+`define MOV_LDR2_S      8'h12
+`define MOV_LKR2_S      8'h13
+`define MOV_S           8'h14
 
-`define HLT_S       8'hFF
+`define SWAP_LDR1_S     8'h15
+`define SWAP_LDR2_S     8'h16
+`define SWAP_P1_S       8'h17
+`define SWAP_P2_S       8'h18
+
+`define POP_S           8'h19
+
+`define DUP_LDR1_S      8'h1A
+`define DUP_P1_S        8'h1B
+
+`define ADD_LDR1_S      8'h1C
+`define ADD_LDR2_S      8'h1D
+`define ADD_LKR2_S      8'h1E
+`define ADD_P1_S        8'h1F
+
+`define SUB_LDR2_S      8'h20
+`define SUB_LDR1_S      8'h21
+`define SUB_LKR1_S      8'h22
+`define SUB_P1_S        8'h23
+
+`define MSR_LDSR_S      8'h24
+`define MSR_LKSR_S      8'h25
+
+`define PSR_S           8'h26
+
+`define JMP_LDPC_S      8'h27
+`define JMP_LKPC_S      8'h28
+
+`define HLT_S           8'hFF
 
 //------------------------------------------------------------------------------------------------
 //Some constants
+
 `define ADDR_SR   2'd0
 `define ADDR_SRI  2'd1
 `define ADDR_PC   2'd2
@@ -63,12 +92,12 @@
 `define SR_ALU    2'd0
 `define SR_ID     2'd1
 `define SR_SSP    2'd2
-`define SR_0      2'd3
+`define SR_IMM    2'd3
 
 `define PC_ALU    2'd0
 `define PC_ID     2'd1
 `define PC_EP     2'd2
-`define PC_0      2'd3
+`define PC_IMM    2'd3
 
 `define IDC_INC   1'b0
 `define IDC_DEC   1'b1
@@ -126,6 +155,14 @@ always@ (negedge clk)
                         `PUSH:  state <= `PUSH_S;
                         `MOV:   state <= `MOV_LDR1_S;
                         `HLT:   state <= `HLT_S;
+                        `SWAP:  state <= `SWAP_LDR1_S;
+                        `POP:   state <= `POP_S;
+                        `DUP:   state <= `DUP_LDR1_S;
+                        `ADD:   state <= `ADD_LDR1_S;
+                        `SUB:   state <= `SUB_LDR2_S;
+                        `MSR:   state <= `MSR_LDSR_S;
+                        `PSR:   state <= `PSR_S;
+                        `JMP:   state <= `JMP_LDPC_S;
                         
                         endcase
         
@@ -136,11 +173,39 @@ always@ (negedge clk)
         `MOV_LKR2_S:    state <= `MOV_S;
         `MOV_S:         state <= `PC_INC_S;
         
-        `PC_INC_S:  state <= `GET_CMD_S;
+        `SWAP_LDR1_S:   state <= `SWAP_LDR2_S;
+        `SWAP_LDR2_S:   state <= `SWAP_P1_S;
+        `SWAP_P1_S:     state <= `SWAP_P2_S;
+        `SWAP_P2_S:     state <= `PC_INC_S;
         
-        `HLT_S: state <= `HLT_S;    
+        `POP_S:         state <= `PC_INC_S;
         
-        default: state <= `HLT_S;
+        `DUP_LDR1_S:    state <= `DUP_P1_S;
+        `DUP_P1_S:      state <= `PC_INC_S;               
+        
+        `ADD_LDR1_S:    state <= `ADD_LDR2_S;
+        `ADD_LDR2_S:    state <= `ADD_LKR2_S;
+        `ADD_LKR2_S:    state <= `ADD_P1_S;
+        `ADD_P1_S:      state <= `PC_INC_S;
+        
+        `SUB_LDR2_S:    state <= `SUB_LDR1_S;
+        `SUB_LDR1_S:    state <= `SUB_LKR1_S;
+        `SUB_LKR1_S:    state <= `SUB_P1_S;
+        `SUB_P1_S:      state <= `PC_INC_S;
+
+        `MSR_LDSR_S:    state <= `MSR_LKSR_S;
+        `MSR_LKSR_S:    state <= `PC_INC_S;
+        
+        `PSR_S:         state <= `PC_INC_S;
+        
+        `JMP_LDPC_S:    state <= `JMP_LKPC_S;
+        `JMP_LKPC_S:    state <= `PC_INC_S;
+        
+        `PC_INC_S:      state <= `GET_CMD_S;
+        
+        `HLT_S:         state <= `HLT_S;    
+        
+        default:        state <= `HLT_S;
         
         endcase
         
@@ -163,19 +228,19 @@ always@ (negedge clk)
                   
                     `PUSH:  begin
                     
-                            addr_sel <= `ADDR_SRI;
-                            data_sel <= `DATA_IMM;
+                            addr_sel    <= `ADDR_SRI;
+                            data_sel    <= `DATA_IMM;
                             
-                            SR_inc   <= `IDC_DEC;
-                            SR_incc  <= `SR_ID;
+                            SR_inc      <= `IDC_DEC;
+                            SR_incc     <= `SR_ID;
                             
-                            memory_w <= 1;
+                            memory_w    <= 1;
                             
-                            cmd_w <= 0;
-                            R1_w <= 0;
-                            R2_w <= 0;
-                            SR_w <= 0;
-                            PC_w <= 0;
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
                             
                             end
                             
@@ -183,15 +248,123 @@ always@ (negedge clk)
                                 
                             addr_sel    <= `ADDR_SR;                    
                                         
-                            cmd_w <= 0;
-                            R1_w <= 0;
-                            R2_w <= 0;
-                            SR_w <= 0;
-                            PC_w <= 0;
-                            memory_w <= 0;
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
                     
                             end
                             
+                    `SWAP:  begin                    
+                                
+                            addr_sel    <= `ADDR_SR;
+                                    
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
+                    
+                            end
+                            
+                    `POP:   begin
+                            
+                            SR_inc      <= `IDC_INC;
+                            SR_incc     <= `SR_ID;
+                            
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 1;
+                            PC_w        <= 0;
+                    
+                            end
+                        
+                    `DUP:   begin
+                            
+                            addr_sel    <= `ADDR_SR;
+                                    
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
+                    
+                            end
+                            
+                    `ADD:   begin
+                    
+                            addr_sel    <= `ADDR_SR;                    
+                                        
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
+                            
+                            end
+                        
+                    `SUB:   begin
+                    
+                            addr_sel    <= `ADDR_SR;                    
+                                        
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
+                            
+                            end
+                            
+                    `MSR:   begin
+                            
+                            addr_sel    <= `ADDR_SR;                    
+                                        
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
+                    
+                            end
+                          
+                    `PSR:   begin
+                            
+                            addr_sel    <= `ADDR_SRI;
+                            data_sel    <= `DATA_SR;
+                                        
+                            SR_inc      <= `IDC_DEC;
+                            SR_incc     <= `SR_ID;
+                                        
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 1;
+                            PC_w        <= 0;
+                            memory_w    <= 1;
+                    
+                            end
+                          
+                    `JMP:   begin
+                            
+                            addr_sel    <= `ADDR_SR;                    
+                                        
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
+
+                            end
+                          
                     endcase
         
 
@@ -200,16 +373,16 @@ always@ (negedge clk)
         
         `PUSH_S:    begin
                     
-                    SR_w    <= 1;
+                    SR_w        <= 1;
                     
-                    PC_inc  <= `IDC_INC;
-                    PC_incc <= `PC_ID;
-                    PC_w    <= 1;
+                    PC_inc      <= `IDC_INC;
+                    PC_incc     <= `PC_ID;
+                    PC_w        <= 1;
                     
-                    cmd_w <= 0;
-                    R1_w <= 0;
-                    R2_w <= 0;
-                    memory_w <= 0;
+                    cmd_w       <= 0;
+                    R1_w        <= 0;
+                    R2_w        <= 0;
+                    memory_w    <= 0;
         
                     end
                
@@ -224,11 +397,11 @@ always@ (negedge clk)
                         
                         R1_w        <= 1;
                                         
-                        cmd_w <= 0;
-                        R2_w <= 0;
-                        SR_w <= 0;
-                        PC_w <= 0;
-                        memory_w <= 0;
+                        cmd_w       <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
                         
                         end
                         
@@ -237,10 +410,10 @@ always@ (negedge clk)
                         SR_w        <= 1;
                         R2_w        <= 1;
                                                 
-                        cmd_w <= 0;
-                        R1_w <= 0;
-                        PC_w <= 0;
-                        memory_w <= 0;
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
                         
                         end
                  
@@ -253,27 +426,339 @@ always@ (negedge clk)
 
                         memory_w    <= 1;
                                     
-                        cmd_w <= 0;
-                        R1_w <= 0;
-                        R2_w <= 0;
-                        SR_w <= 0;
-                        PC_w <= 0;
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
 
                         end
                  
         `MOV_S:         begin
                         
-                        PC_inc  <= `IDC_INC;
-                        PC_incc <= `PC_ID;
-                        PC_w    <= 1;
+                        PC_inc      <= `IDC_INC;
+                        PC_incc     <= `PC_ID;
+                        PC_w        <= 1;
                                         
-                        cmd_w <= 0;
-                        R1_w <= 0;
-                        R2_w <= 0;
-                        SR_w <= 0;
-                        memory_w <= 0;
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        memory_w    <= 0;
 
                         end
+
+//------------------------------------------------------------------------------------------------
+//Swap branch     
+
+        `SWAP_LDR1_S:   begin
+
+                        addr_sel    <= `ADDR_SRI;
+                        SR_inc      <= `IDC_INC;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 1;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+                        
+                        end
+
+        `SWAP_LDR2_S:   begin
+                        
+                        data_sel    <= `DATA_ALU;
+                        
+                        ALU_func    <= `ALU_R1;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 1;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 1;
+        
+                        end
+                        
+        `SWAP_P1_S:     begin
+        
+                        addr_sel    <= `ADDR_SR;
+                        
+                        ALU_func    <= `ALU_R2;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 1;
+                        
+                        end
+                        
+        `SWAP_P2_S:     begin
+                        
+                        PC_inc      <= `IDC_INC;
+                        PC_incc     <= `PC_ID;
+                        PC_w        <= 1;
+                                        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        memory_w    <= 0;
+
+                        end
+
+//------------------------------------------------------------------------------------------------
+//Pop branch      
+        
+        `POP_S:     begin
+                    
+                    SR_w        <= 0;
+                    
+                    PC_inc      <= `IDC_INC;
+                    PC_incc     <= `PC_ID;
+                    PC_w        <= 1;
+                    
+                    cmd_w       <= 0;
+                    R1_w        <= 0;
+                    R2_w        <= 0;
+                    memory_w    <= 0;
+        
+                    end
+
+//------------------------------------------------------------------------------------------------
+//Dup branch
+
+        `DUP_LDR1_S:    begin
+
+                        addr_sel    <= `ADDR_SRI;
+                        data_sel    <= `DATA_ALU;
+                        
+                        SR_inc      <= `IDC_DEC;
+                        SR_incc     <= `SR_ID;
+                        
+                        ALU_func    <= `ALU_R1;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 1;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+
+                        end
+                        
+        `DUP_P1_S:      begin
+                    
+                        PC_inc      <= `IDC_INC;
+                        PC_incc     <= `PC_ID;
+                        PC_w        <= 1;
+
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 1;
+                        memory_w    <= 1;
+
+                        end
+
+//------------------------------------------------------------------------------------------------
+//Add branch
+
+        `ADD_LDR1_S:    begin
+        
+                        addr_sel    <= `ADDR_SRI;
+                        SR_inc      <= `IDC_INC;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 1;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+                        
+                        end
+                        
+        `ADD_LDR2_S:    begin
+                        
+                        R1_w        <= 0;
+                        R2_w        <= 1;
+                        cmd_w       <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+                        
+                        end
+                        
+        `ADD_LKR2_S:    begin
+
+                        data_sel    <= `DATA_ALU;
+                        
+                        SR_inc      <= `IDC_INC;
+                        SR_incc     <= `SR_ID;
+                        
+                        ALU_func    <= `ADD_alu;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 1;
+                        PC_w        <= 0;
+                        memory_w    <= 1;
+    
+                        end
+                        
+        `ADD_P1_S:      begin
+
+                        PC_inc      <= `IDC_INC;
+                        PC_incc     <= `PC_ID;
+                        PC_w        <= 1;
+
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        memory_w    <= 0;
+    
+                        end
+
+//------------------------------------------------------------------------------------------------
+//Sub branch
+
+        `SUB_LDR2_S:    begin
+        
+                        addr_sel    <= `ADDR_SRI;
+                        SR_inc      <= `IDC_INC;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 1;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+                        
+                        end
+                        
+        `SUB_LDR1_S:    begin
+                        
+                        R1_w        <= 1;
+                        R2_w        <= 0;
+                        cmd_w       <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+                        
+                        end
+                        
+        `SUB_LKR1_S:    begin
+
+                        data_sel    <= `DATA_ALU;
+                        
+                        SR_inc      <= `IDC_INC;
+                        SR_incc     <= `SR_ID;
+                        
+                        ALU_func    <= `SUB_alu;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 1;
+                        PC_w        <= 0;
+                        memory_w    <= 1;
+    
+                        end
+                        
+        `SUB_P1_S:      begin
+
+                        PC_inc      <= `IDC_INC;
+                        PC_incc     <= `PC_ID;
+                        PC_w        <= 1;
+
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        memory_w    <= 0;
+    
+                        end
+
+//------------------------------------------------------------------------------------------------
+//MSR branch
+
+        `MSR_LDSR_S:    begin
+        
+                        SR_incc <= `SR_IMM;     
+        
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        cmd_w       <= 0;
+                        SR_w        <= 1;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+                        
+                        end
+                        
+        `MSR_LKSR_S:    begin
+                            
+                        PC_inc      <= `IDC_INC;
+                        PC_incc     <= `PC_ID;
+                        PC_w        <= 1;
+
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        memory_w    <= 0;
+                        
+                        end
+
+//------------------------------------------------------------------------------------------------
+//PSR branch
+
+        `PSR_S: begin
+        
+                PC_inc      <= `IDC_INC;
+                PC_incc     <= `PC_ID;
+                PC_w        <= 1;
+
+                cmd_w       <= 0;
+                R1_w        <= 0;
+                R2_w        <= 0;
+                SR_w        <= 0;
+                memory_w    <= 0;
+        
+                end
+
+//------------------------------------------------------------------------------------------------
+//JMP branch
+
+        `JMP_LDPC_S:    begin
+        
+                        PC_incc     <= `PC_IMM;
+                        PC_w        <= 1;
+
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        memory_w    <= 0;
+                
+                        end
+        
+        `JMP_LKPC_S:    begin
+            
+                        SR_inc      <= `IDC_INC;
+                        SR_incc     <= `SR_ID;
+                        
+                        SR_w        <= 1;
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+                
+                        end    
 
 //------------------------------------------------------------------------------------------------
 //End of all branches
