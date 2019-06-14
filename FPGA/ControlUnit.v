@@ -3,26 +3,26 @@
 //------------------------------------------------------------------------------------------------
 //Opcodes
 
-`define PUSH 6'h0    //0x00
-`define POP  6'h1    //0x04
-`define DUP  6'h2    //0x08
-`define SWAP 6'h3    //0x0C
+`define PUSH 6'h0    //0x00 +
+`define POP  6'h1    //0x04 +
+`define DUP  6'h2    //0x08 +
+`define SWAP 6'h3    //0x0C +
 
-`define JMP  6'h10   //0x40
+`define JMP  6'h10   //0x40 -
 `define JE   6'h11   //0x44
 
-`define ADD  6'h20   //0x80
-`define SUB  6'h21   //0x84
+`define ADD  6'h20   //0x80 +
+`define SUB  6'h21   //0x84 +
 `define MUL  6'h22   //0x88
 `define DIV  6'h23   //0x8C
 
-`define MOV  6'h30   //0xC0
-`define MSR  6'h31   //0xC4
-`define PSR  6'h32   //0xC8
+`define MOV  6'h30   //0xC0 +
+`define MSR  6'h31   //0xC4 +
+`define PSR  6'h32   //0xC8 -
 `define PPC  6'h33   //0xCC
 
 `define WINT 6'h3E   //0xF8
-`define HLT  6'h3F   //0xFC
+`define HLT  6'h3F   //0xFC +
 
 //------------------------------------------------------------------------------------------------
 //ALU func
@@ -66,6 +66,9 @@
 `define SUB_LKR1_S      8'h22
 `define SUB_P1_S        8'h23
 
+`define MSR_LDSR_S      8'h24
+`define MSR_LKSR_S      8'h25
+
 `define HLT_S           8'hFF
 
 //------------------------------------------------------------------------------------------------
@@ -84,12 +87,12 @@
 `define SR_ALU    2'd0
 `define SR_ID     2'd1
 `define SR_SSP    2'd2
-`define SR_0      2'd3
+`define SR_IMM    2'd3
 
 `define PC_ALU    2'd0
 `define PC_ID     2'd1
 `define PC_EP     2'd2
-`define PC_0      2'd3
+`define PC_IMM    2'd3
 
 `define IDC_INC   1'b0
 `define IDC_DEC   1'b1
@@ -152,7 +155,8 @@ always@ (negedge clk)
                         `DUP:   state <= `DUP_LDR1_S;
                         `ADD:   state <= `ADD_LDR1_S;
                         `SUB:   state <= `SUB_LDR2_S;
-                        
+                        `MSR:   state <= `MSR_LDSR_S;
+
                         endcase
         
         `PUSH_S:        state <= `PC_INC_S;
@@ -181,6 +185,9 @@ always@ (negedge clk)
         `SUB_LDR1_S:    state <= `SUB_LKR1_S;
         `SUB_LKR1_S:    state <= `SUB_P1_S;
         `SUB_P1_S:      state <= `PC_INC_S;
+
+        `MSR_LDSR_S:    state <= `MSR_LKSR_S;
+        `MSR_LKSR_S:    state <= `PC_INC_S;
         
         `PC_INC_S:  state <= `GET_CMD_S;
         
@@ -301,6 +308,19 @@ always@ (negedge clk)
                             PC_w        <= 0;
                             memory_w    <= 0;
                             
+                            end
+                            
+                    `MSR:   begin
+                            
+                            addr_sel    <= `ADDR_SR;                    
+                                        
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
+                    
                             end
                             
                     endcase
@@ -619,6 +639,36 @@ always@ (negedge clk)
                         SR_w        <= 0;
                         memory_w    <= 0;
     
+                        end
+
+//------------------------------------------------------------------------------------------------
+//MSR branch
+
+        `MSR_LDSR_S:    begin
+        
+                        SR_incc <= `SR_IMM;     
+        
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        cmd_w       <= 0;
+                        SR_w        <= 1;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+                        
+                        end
+                        
+        `MSR_LKSR_S:    begin
+                            
+                        PC_inc      <= `IDC_INC;
+                        PC_incc     <= `PC_ID;
+                        PC_w        <= 1;
+
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        memory_w    <= 0;
+                        
                         end
 
 //------------------------------------------------------------------------------------------------

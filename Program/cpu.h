@@ -109,8 +109,7 @@ bool CPU :: CLK (uint16_t* mem)
         case MSR:
             assert (SR < MEMORY_SIZE);
             assert (mem[SR] < MEMORY_SIZE);
-            STK_POP();
-            SR = mem[SR - 1];
+            SR = mem[SR];
             break;
 
         case PSR:
