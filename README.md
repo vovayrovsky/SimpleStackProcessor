@@ -1,19 +1,13 @@
 # SimpleStackProcessor
 
-## Command system
+## Wiki
 
-All commands start with 6-bit opcode. Others bits are unusable except PUSH command. PUSH pushes 10 last bits into stack.
+You can find wiki here: [wiki](https://github.com/vovayrovsky/SimpleStackProcessor/wiki)
 
-To see opcode list: [CS.h](Program/CS.h)
+## What is SSP
 
-## Memory map
+SSP is Simple Stack Processor. It's existing just for fun and for education.
 
-Common memory size: 0x00FF bytes.
+## Authors
 
-Memory starts with 0x20 reserved bytes. (From 0x0000 to 0x0019)
-
-Entry point at 0x0020.
-
-Start stack point at 0x00FE. 
-
-
+ * **Vova Yrovsky** - vova@txlib.ru - The Creator of this the most powerful calculator
