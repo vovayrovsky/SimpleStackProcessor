@@ -24,8 +24,7 @@
 static const char *ng0 = "C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/CPU.v";
 static unsigned int ng1[] = {1023U, 0U};
 static unsigned int ng2[] = {254U, 0U};
-static unsigned int ng3[] = {0U, 0U};
-static unsigned int ng4[] = {32U, 0U};
+static unsigned int ng3[] = {32U, 0U};
 
 
 
@@ -57,7 +56,7 @@ static void Cont_34_0(char *t0)
     unsigned int t24;
     char *t25;
 
-LAB0:    t1 = (t0 + 7648U);
+LAB0:    t1 = (t0 + 7328U);
     t2 = *((char **)t1);
     if (t2 == 0)
         goto LAB2;
@@ -80,7 +79,7 @@ LAB2:    xsi_set_current_line(34, ng0);
     *((unsigned int *)t3) = (t10 & 63U);
     t11 = *((unsigned int *)t2);
     *((unsigned int *)t2) = (t11 & 63U);
-    t12 = (t0 + 9304);
+    t12 = (t0 + 8488);
     t13 = (t12 + 56U);
     t14 = *((char **)t13);
     t15 = (t14 + 56U);
@@ -99,7 +98,7 @@ LAB2:    xsi_set_current_line(34, ng0);
     t24 = *((unsigned int *)t22);
     *((unsigned int *)t22) = (t24 | t18);
     xsi_driver_vfirst_trans(t12, 0, 5);
-    t25 = (t0 + 9208);
+    t25 = (t0 + 8392);
     *((int *)t25) = 1;
 
 LAB1:    return;
@@ -157,7 +156,7 @@ static void Cont_35_1(char *t0)
     unsigned int t48;
     char *t49;
 
-LAB0:    t1 = (t0 + 7896U);
+LAB0:    t1 = (t0 + 7576U);
     t2 = *((char **)t1);
     if (t2 == 0)
         goto LAB2;
@@ -185,7 +184,7 @@ LAB2:    xsi_set_current_line(35, ng0);
         goto LAB4;
 
 LAB5:
-LAB6:    t36 = (t0 + 9368);
+LAB6:    t36 = (t0 + 8552);
     t37 = (t36 + 56U);
     t38 = *((char **)t37);
     t39 = (t38 + 56U);
@@ -204,7 +203,7 @@ LAB6:    t36 = (t0 + 9368);
     t48 = *((unsigned int *)t46);
     *((unsigned int *)t46) = (t48 | t42);
     xsi_driver_vfirst_trans(t36, 0, 15);
-    t49 = (t0 + 9224);
+    t49 = (t0 + 8408);
     *((int *)t49) = 1;
 
 LAB1:    return;
@@ -255,7 +254,7 @@ static void implSig1_execute(char *t0)
     unsigned int t14;
     unsigned int t15;
 
-LAB0:    t1 = (t0 + 8144U);
+LAB0:    t1 = (t0 + 7824U);
     t2 = *((char **)t1);
     if (t2 == 0)
         goto LAB2;
@@ -263,7 +262,7 @@ LAB0:    t1 = (t0 + 8144U);
 LAB3:    goto *t2;
 
 LAB2:    t2 = ((char*)((ng2)));
-    t3 = (t0 + 9432);
+    t3 = (t0 + 8616);
     t4 = (t3 + 56U);
     t5 = *((char **)t4);
     t6 = (t5 + 56U);
@@ -304,7 +303,7 @@ static void implSig2_execute(char *t0)
     unsigned int t14;
     unsigned int t15;
 
-LAB0:    t1 = (t0 + 8392U);
+LAB0:    t1 = (t0 + 8072U);
     t2 = *((char **)t1);
     if (t2 == 0)
         goto LAB2;
@@ -312,105 +311,7 @@ LAB0:    t1 = (t0 + 8392U);
 LAB3:    goto *t2;
 
 LAB2:    t2 = ((char*)((ng3)));
-    t3 = (t0 + 9496);
-    t4 = (t3 + 56U);
-    t5 = *((char **)t4);
-    t6 = (t5 + 56U);
-    t7 = *((char **)t6);
-    memset(t7, 0, 8);
-    t8 = 65535U;
-    t9 = t8;
-    t10 = (t2 + 4);
-    t11 = *((unsigned int *)t2);
-    t8 = (t8 & t11);
-    t12 = *((unsigned int *)t10);
-    t9 = (t9 & t12);
-    t13 = (t7 + 4);
-    t14 = *((unsigned int *)t7);
-    *((unsigned int *)t7) = (t14 | t8);
-    t15 = *((unsigned int *)t13);
-    *((unsigned int *)t13) = (t15 | t9);
-    xsi_driver_vfirst_trans(t3, 0, 15);
-
-LAB1:    return;
-}
-
-static void implSig3_execute(char *t0)
-{
-    char *t1;
-    char *t2;
-    char *t3;
-    char *t4;
-    char *t5;
-    char *t6;
-    char *t7;
-    unsigned int t8;
-    unsigned int t9;
-    char *t10;
-    unsigned int t11;
-    unsigned int t12;
-    char *t13;
-    unsigned int t14;
-    unsigned int t15;
-
-LAB0:    t1 = (t0 + 8640U);
-    t2 = *((char **)t1);
-    if (t2 == 0)
-        goto LAB2;
-
-LAB3:    goto *t2;
-
-LAB2:    t2 = ((char*)((ng4)));
-    t3 = (t0 + 9560);
-    t4 = (t3 + 56U);
-    t5 = *((char **)t4);
-    t6 = (t5 + 56U);
-    t7 = *((char **)t6);
-    memset(t7, 0, 8);
-    t8 = 65535U;
-    t9 = t8;
-    t10 = (t2 + 4);
-    t11 = *((unsigned int *)t2);
-    t8 = (t8 & t11);
-    t12 = *((unsigned int *)t10);
-    t9 = (t9 & t12);
-    t13 = (t7 + 4);
-    t14 = *((unsigned int *)t7);
-    *((unsigned int *)t7) = (t14 | t8);
-    t15 = *((unsigned int *)t13);
-    *((unsigned int *)t13) = (t15 | t9);
-    xsi_driver_vfirst_trans(t3, 0, 15);
-
-LAB1:    return;
-}
-
-static void implSig4_execute(char *t0)
-{
-    char *t1;
-    char *t2;
-    char *t3;
-    char *t4;
-    char *t5;
-    char *t6;
-    char *t7;
-    unsigned int t8;
-    unsigned int t9;
-    char *t10;
-    unsigned int t11;
-    unsigned int t12;
-    char *t13;
-    unsigned int t14;
-    unsigned int t15;
-
-LAB0:    t1 = (t0 + 8888U);
-    t2 = *((char **)t1);
-    if (t2 == 0)
-        goto LAB2;
-
-LAB3:    goto *t2;
-
-LAB2:    t2 = ((char*)((ng3)));
-    t3 = (t0 + 9624);
+    t3 = (t0 + 8680);
     t4 = (t3 + 56U);
     t5 = *((char **)t4);
     t6 = (t5 + 56U);
@@ -436,7 +337,7 @@ LAB1:    return;
 
 extern void work_m_00000000002102863260_3508565487_init()
 {
-	static char *pe[] = {(void *)Cont_34_0,(void *)Cont_35_1,(void *)implSig1_execute,(void *)implSig2_execute,(void *)implSig3_execute,(void *)implSig4_execute};
+	static char *pe[] = {(void *)Cont_34_0,(void *)Cont_35_1,(void *)implSig1_execute,(void *)implSig2_execute};
 	xsi_register_didat("work_m_00000000002102863260_3508565487", "isim/testtop_isim_beh.exe.sim/work/m_00000000002102863260_3508565487.didat");
 	xsi_register_executes(pe);
 }

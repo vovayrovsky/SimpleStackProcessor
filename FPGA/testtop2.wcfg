@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/testtop_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="testtop" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="4" />
+   <wvobject fp_name="/testtop/uut/cpu/CU/state" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">state[7:0]</obj_property>
+      <obj_property name="ObjectShortName">state[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testtop/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testtop/uut/mem/memory_ready" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">memory_ready</obj_property>
+      <obj_property name="ObjectShortName">memory_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testtop/uut/port" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">port[15:0]</obj_property>
+      <obj_property name="ObjectShortName">port[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+</wave_config>
