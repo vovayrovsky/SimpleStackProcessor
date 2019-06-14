@@ -56,6 +56,11 @@
 `define DUP_LDR1_S      8'h1A
 `define DUP_P1_S        8'h1B
 
+`define ADD_LDR1_S      8'h1C
+`define ADD_LDR2_S      8'h1D
+`define ADD_LKR2_S      8'h1E
+`define ADD_P1_S        8'h1F
+
 `define HLT_S           8'hFF
 
 //------------------------------------------------------------------------------------------------
@@ -140,6 +145,7 @@ always@ (negedge clk)
                         `SWAP:  state <= `SWAP_LDR1_S;
                         `POP:   state <= `POP_S;
                         `DUP:   state <= `DUP_LDR1_S;
+                        `ADD:   state <= `ADD_LDR1_S;
                         
                         endcase
         
@@ -159,6 +165,11 @@ always@ (negedge clk)
         
         `DUP_LDR1_S:    state <= `DUP_P1_S;
         `DUP_P1_S:      state <= `PC_INC_S;               
+        
+        `ADD_LDR1_S:    state <= `ADD_LDR2_S;
+        `ADD_LDR2_S:    state <= `ADD_LKR2_S;
+        `ADD_LKR2_S:    state <= `ADD_P1_S;
+        `ADD_P1_S:      state <= `PC_INC_S;
         
         `PC_INC_S:  state <= `GET_CMD_S;
         
@@ -253,6 +264,19 @@ always@ (negedge clk)
                             PC_w        <= 0;
                             memory_w    <= 0;
                     
+                            end
+                            
+                    `ADD:   begin
+                    
+                            addr_sel    <= `ADDR_SR;                    
+                                        
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
+                            
                             end
                         
                     endcase
@@ -453,6 +477,65 @@ always@ (negedge clk)
 
                         end
 
+//------------------------------------------------------------------------------------------------
+//Add branch
+
+        `ADD_LDR1_S:    begin
+        
+                        addr_sel    <= `ADDR_SRI;
+                        SR_inc      <= `IDC_INC;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 1;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+                        
+                        end
+                        
+        `ADD_LDR2_S:    begin
+                        
+                        R1_w        <= 0;
+                        R2_w        <= 1;
+                        cmd_w       <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+                        
+                        end
+                        
+        `ADD_LKR2_S:    begin
+
+                        data_sel    <= `DATA_ALU;
+                        
+                        SR_inc      <= `IDC_INC;
+                        SR_incc     <= `SR_ID;
+                        
+                        ALU_func    <= `ADD_alu;
+                        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 1;
+                        PC_w        <= 0;
+                        memory_w    <= 1;
+    
+                        end
+                        
+        `ADD_P1_S:      begin
+
+                        PC_inc      <= `IDC_INC;
+                        PC_incc     <= `PC_ID;
+                        PC_w        <= 1;
+
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        memory_w    <= 0;
+    
+                        end
 //------------------------------------------------------------------------------------------------
 //End of all branches
                        
