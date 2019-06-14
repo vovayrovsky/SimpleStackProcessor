@@ -291,10 +291,10 @@ Synthesizing Unit <ControlUnit>.
     Found 8-bit register for signal <state>.
     Found finite state machine <FSM_0> for signal <state>.
     -----------------------------------------------------------------------
-    | States             | 12                                             |
-    | Transitions        | 27                                             |
-    | Inputs             | 7                                              |
-    | Outputs            | 12                                             |
+    | States             | 13                                             |
+    | Transitions        | 30                                             |
+    | Inputs             | 8                                              |
+    | Outputs            | 13                                             |
     | Clock              | clk (falling_edge)                             |
     | Power Up State     | 00001111                                       |
     | Encoding           | auto                                           |
@@ -302,7 +302,7 @@ Synthesizing Unit <ControlUnit>.
     -----------------------------------------------------------------------
     Summary:
 	inferred  21 D-type flip-flop(s).
-	inferred   8 Multiplexer(s).
+	inferred   6 Multiplexer(s).
 	inferred   1 Finite State Machine(s).
 Unit <ControlUnit> synthesized.
 
@@ -365,8 +365,8 @@ Macro Statistics
  16-bit comparator equal                               : 1
  16-bit comparator lessequal                           : 1
  27-bit comparator greater                             : 2
-# Multiplexers                                         : 277
- 1-bit 2-to-1 multiplexer                              : 6
+# Multiplexers                                         : 275
+ 1-bit 2-to-1 multiplexer                              : 4
  16-bit 2-to-1 multiplexer                             : 263
  16-bit 256-to-1 multiplexer                           : 1
  16-bit 4-to-1 multiplexer                             : 4
@@ -435,8 +435,8 @@ Macro Statistics
  16-bit comparator equal                               : 1
  16-bit comparator lessequal                           : 1
  27-bit comparator greater                             : 2
-# Multiplexers                                         : 4117
- 1-bit 2-to-1 multiplexer                              : 4086
+# Multiplexers                                         : 4115
+ 1-bit 2-to-1 multiplexer                              : 4084
  1-bit 256-to-1 multiplexer                            : 16
  16-bit 2-to-1 multiplexer                             : 8
  16-bit 4-to-1 multiplexer                             : 4
@@ -458,23 +458,24 @@ WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ALU_func_1> has a c
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ALU_func_2> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ALU_func_3> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
 Analyzing FSM <MFsm> for best encoding.
-Optimizing FSM <cpu/CU/FSM_0> on signal <state[1:12]> with one-hot encoding.
---------------------------
+Optimizing FSM <cpu/CU/FSM_0> on signal <state[1:4]> with sequential encoding.
+----------------------
  State    | Encoding
---------------------------
- 00001111 | 000000000001
- 00010000 | 000000000010
- 00010001 | 000000000100
- 00010010 | 000000001000
- 00010011 | 000000010000
- 00010100 | 000000100000
- 00010101 | 000001000000
- 00010110 | 000010000000
- 00010111 | 000100000000
- 00011000 | 001000000000
- 00001110 | 010000000000
- 11111111 | 100000000000
---------------------------
+----------------------
+ 00001111 | 0000
+ 00010000 | 0001
+ 00010001 | 0010
+ 00010010 | 0011
+ 00010011 | 0100
+ 00010100 | 0101
+ 00010101 | 0110
+ 00010110 | 0111
+ 00010111 | 1000
+ 00011000 | 1001
+ 00011001 | 1010
+ 00001110 | 1011
+ 11111111 | 1100
+----------------------
 
 Optimizing unit <register_1> ...
 
@@ -487,10 +488,14 @@ Optimizing unit <x4seg7> ...
 Optimizing unit <CPU> ...
 
 Optimizing unit <ControlUnit> ...
-WARNING:Xst:1293 - FF/Latch <SR_incc_1> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cmd_w> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cmd_w> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <SR_incc_0> has a constant value of 1 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR_incc_1> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <data_sel_1> has a constant value of 1 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cmd_w> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cmd_w> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR_incc_0> has a constant value of 1 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <SR_incc_1> has a constant value of 0 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <data_sel_1> has a constant value of 1 in block <ControlUnit>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <ALU> ...
 
@@ -500,7 +505,7 @@ WARNING:Xst:2677 - Node <cpu/alu/Mmult_n0017> of sequential type is unconnected 
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 99.
+Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 98.
 
 Final Macro Processing ...
 
@@ -508,8 +513,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 4275
- Flip-Flops                                            : 4275
+# Registers                                            : 4265
+ Flip-Flops                                            : 4265
 
 =========================================================================
 
@@ -532,25 +537,25 @@ Top Level Output File Name         : top.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 6497
+# BELS                             : 6459
 #      GND                         : 1
 #      INV                         : 6
 #      LUT1                        : 68
 #      LUT2                        : 25
-#      LUT3                        : 48
-#      LUT4                        : 32
-#      LUT5                        : 4144
-#      LUT6                        : 1175
+#      LUT3                        : 25
+#      LUT4                        : 27
+#      LUT5                        : 4140
+#      LUT6                        : 1169
 #      MUXCY                       : 94
 #      MUXF7                       : 545
 #      MUXF8                       : 272
 #      VCC                         : 1
 #      XORCY                       : 86
-# FlipFlops/Latches                : 4275
+# FlipFlops/Latches                : 4265
 #      FD                          : 37
-#      FD_1                        : 12
+#      FD_1                        : 4
 #      FDE                         : 4160
-#      FDE_1                       : 7
+#      FDE_1                       : 5
 #      FDR                         : 54
 #      FDR_1                       : 5
 # Clock Buffers                    : 2
@@ -566,15 +571,15 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            4275  out of  18224    23%  
- Number of Slice LUTs:                 5498  out of   9112    60%  
-    Number used as Logic:              5498  out of   9112    60%  
+ Number of Slice Registers:            4265  out of  18224    23%  
+ Number of Slice LUTs:                 5460  out of   9112    59%  
+    Number used as Logic:              5460  out of   9112    59%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   5525
-   Number with an unused Flip Flop:    1250  out of   5525    22%  
-   Number with an unused LUT:            27  out of   5525     0%  
-   Number of fully used LUT-FF pairs:  4248  out of   5525    76%  
+ Number of LUT Flip Flop pairs used:   5487
+   Number with an unused Flip Flop:    1222  out of   5487    22%  
+   Number with an unused LUT:            27  out of   5487     0%  
+   Number of fully used LUT-FF pairs:  4238  out of   5487    77%  
    Number of unique control sets:        12
 
 IO Utilization: 
@@ -607,7 +612,7 @@ Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
 clk                                | BUFGP                  | 56    |
 seg7_sclk/sclk                     | NONE(drv/counter_1)    | 2     |
-cpu_sclk/sclk                      | BUFG                   | 4217  |
+cpu_sclk/sclk                      | BUFG                   | 4207  |
 -----------------------------------+------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -678,7 +683,7 @@ Delay:               2.190ns (Levels of Logic = 1)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'cpu_sclk/sclk'
   Clock period: 15.660ns (frequency: 63.859MHz)
-  Total number of paths / destination ports: 2298312 / 8389
+  Total number of paths / destination ports: 2224154 / 8377
 -------------------------------------------------------------------------
 Delay:               7.830ns (Levels of Logic = 11)
   Source:            cpu/CU/SR_inc (FF)
@@ -786,7 +791,7 @@ Clock to Setup on destination clock cpu_sclk/sclk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-cpu_sclk/sclk  |    7.573|    7.830|    4.207|         |
+cpu_sclk/sclk  |    7.673|    7.830|    4.599|         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock seg7_sclk/sclk
@@ -800,14 +805,14 @@ seg7_sclk/sclk |    2.190|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 33.00 secs
-Total CPU time to Xst completion: 33.38 secs
+Total REAL time to Xst completion: 36.00 secs
+Total CPU time to Xst completion: 36.28 secs
  
 --> 
 
-Total memory usage is 346004 kilobytes
+Total memory usage is 345620 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   33 (   0 filtered)
+Number of warnings :   37 (   0 filtered)
 Number of infos    :    6 (   0 filtered)
 

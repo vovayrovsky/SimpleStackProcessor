@@ -21,6 +21,7 @@ int main(int argc, char** argv)
     Board brd;
 
     char buf = 0;
+    char buf1 = 0;
 
     printf ("Loading program\n");
 
@@ -28,9 +29,11 @@ int main(int argc, char** argv)
 
     for (len = 0; !feof(fin); len++)
         {
-        fscanf (fin, "%c%c", &(brd.store[len]), &buf);
+        fscanf (fin, "%c%c", &buf1, &buf);
 
-        brd.store[len] = brd.store[len] << 8 | buf;
+        printf ("len: %x %hx|%hx\n", len, int(buf1), int(buf));
+
+        brd.store[len] = ((buf1 & 0xFF) << 8) | (buf & 0xFF);
         }
 
     fclose (fin);

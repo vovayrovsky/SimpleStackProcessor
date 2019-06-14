@@ -51,7 +51,9 @@
 `define SWAP_P1_S       8'h17
 `define SWAP_P2_S       8'h18
 
-`define HLT_S       8'hFF
+`define POP_S           8'h19
+
+`define HLT_S           8'hFF
 
 //------------------------------------------------------------------------------------------------
 //Some constants
@@ -132,7 +134,7 @@ always@ (negedge clk)
                         `MOV:   state <= `MOV_LDR1_S;
                         `HLT:   state <= `HLT_S;
                         `SWAP:  state <= `SWAP_LDR1_S;
-                        
+                        `POP:   state <= `POP_S;
                         endcase
         
         `PUSH_S:        state <= `PC_INC_S;
@@ -146,6 +148,8 @@ always@ (negedge clk)
         `SWAP_LDR2_S:   state <= `SWAP_P1_S;
         `SWAP_P1_S:     state <= `SWAP_P2_S;
         `SWAP_P2_S:     state <= `PC_INC_S;
+        
+        `POP_S:         state <= `PC_INC_S;
         
         `PC_INC_S:  state <= `GET_CMD_S;
         
@@ -213,6 +217,19 @@ always@ (negedge clk)
                             SR_w        <= 0;
                             PC_w        <= 0;
                             memory_w    <= 0;
+                    
+                            end
+                            
+                    `POP:   begin
+                            
+                            SR_inc      <= `IDC_INC;
+                            SR_incc     <= `SR_ID;
+                            
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 1;
+                            PC_w        <= 0;
                     
                             end
                             
@@ -359,6 +376,24 @@ always@ (negedge clk)
                         memory_w    <= 0;
 
                         end
+
+//------------------------------------------------------------------------------------------------
+//Pop branch      
+        
+        `POP_S:     begin
+                    
+                    SR_w        <= 0;
+                    
+                    PC_inc      <= `IDC_INC;
+                    PC_incc     <= `PC_ID;
+                    PC_w        <= 1;
+                    
+                    cmd_w       <= 0;
+                    R1_w        <= 0;
+                    R2_w        <= 0;
+                    memory_w    <= 0;
+        
+                    end
 
 //------------------------------------------------------------------------------------------------
 //End of all branches
