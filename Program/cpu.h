@@ -7,6 +7,7 @@
 
 #define STK_LOAD(a) {SR--; assert (SR < MEMORY_SIZE && SR > 0); mem[SR] = a;}
 #define STK_POP() {SR++; assert(SR < MEMORY_SIZE && SR > 0);}
+#define IMM(a) (a & 0x03FF)
 
 class CPU
     {
@@ -34,14 +35,14 @@ bool CPU :: CLK (uint16_t* mem)
     assert (PC < MEMORY_SIZE);
     uint16_t cmd = mem[PC];
 
-    printf ("Command: %x, PC: %x, ", cmd >> OPCODE_SHIFT, PC);
+    printf ("Command: %x, IMM: %x, PC: %x, ", cmd >> OPCODE_SHIFT, IMM(cmd), PC);
 
     uint16_t buf = 0;
 
     switch (cmd >> OPCODE_SHIFT)
         {
         case PUSH:
-            STK_LOAD (cmd);
+            STK_LOAD (IMM(cmd));
             break;
 
         case POP:
@@ -57,6 +58,17 @@ bool CPU :: CLK (uint16_t* mem)
             buf = mem[SR + 1];
             mem[SR + 1] = mem[SR];
             mem[SR] = buf;
+            break;
+
+        case FTCH:
+            assert (SR < MEMORY_SIZE);
+            assert (mem[SR] < MEMORY_SIZE);
+            mem[SR] = mem[mem[SR]];
+            break;
+
+        case FTCC:
+            assert (IMM(cmd));
+            STK_LOAD(mem[IMM(cmd)]);
             break;
 
         case JMP:
