@@ -7,7 +7,7 @@
 `define POP  6'h1    //0x04 +
 `define DUP  6'h2    //0x08 +
 `define SWAP 6'h3    //0x0C +
-`define FTCH 6'h4    //0x10 -
+`define FTCH 6'h4    //0x10 +
 `define FTCC 6'h5    //0x14 -
 
 `define JMP  6'h10   //0x40 +
