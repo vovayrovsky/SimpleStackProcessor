@@ -13,8 +13,8 @@ wire seg7clk;
     
 clk_s #(40000) seg7_sclk (clk, seg7clk);
 
-clk_s #(500000) cpu_sclk (clk, cpu_clk);
-//assign cpu_clk = clk;
+//clk_s #(500000) cpu_sclk (clk, cpu_clk);
+assign cpu_clk = clk;
 
 wire memory_ready;
 wire [15 : 0] mem_data;

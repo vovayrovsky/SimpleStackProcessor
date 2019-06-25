@@ -7,21 +7,23 @@
 `define POP  6'h1    //0x04 +
 `define DUP  6'h2    //0x08 +
 `define SWAP 6'h3    //0x0C +
+`define FTCH 6'h4    //0x10 -
+`define FTCC 6'h5    //0x14 -
 
-`define JMP  6'h10   //0x40 -
-`define JE   6'h11   //0x44
+`define JMP  6'h10   //0x40 +
+`define JE   6'h11   //0x44 -
 
 `define ADD  6'h20   //0x80 +
 `define SUB  6'h21   //0x84 +
-`define MUL  6'h22   //0x88
-`define DIV  6'h23   //0x8C
+`define MUL  6'h22   //0x88 -
+`define DIV  6'h23   //0x8C -
 
 `define MOV  6'h30   //0xC0 +
 `define MSR  6'h31   //0xC4 +
 `define PSR  6'h32   //0xC8 +
-`define PPC  6'h33   //0xCC
+`define PPC  6'h33   //0xCC -
 
-`define WINT 6'h3E   //0xF8
+`define WINT 6'h3E   //0xF8 -
 `define HLT  6'h3F   //0xFC +
 
 //------------------------------------------------------------------------------------------------
@@ -73,6 +75,11 @@
 
 `define JMP_LDPC_S      8'h27
 `define JMP_LKPC_S      8'h28
+
+`define FTCH_LDR1_S     8'h29
+`define FTCH_LDR2_S     8'h2A
+`define FTCH_LKR2_S     8'h2B
+`define FTCH_P2_S       8'h2C
 
 `define HLT_S           8'hFF
 
@@ -163,6 +170,7 @@ always@ (negedge clk)
                         `MSR:   state <= `MSR_LDSR_S;
                         `PSR:   state <= `PSR_S;
                         `JMP:   state <= `JMP_LDPC_S;
+                        `FTCH:  state <= `FTCH_LDR1_S;
                         
                         endcase
         
@@ -202,6 +210,11 @@ always@ (negedge clk)
         `JMP_LKPC_S:    state <= `PC_INC_S;
         
         `PC_INC_S:      state <= `GET_CMD_S;
+        
+        `FTCH_LDR1_S:   state <= `FTCH_LDR2_S;
+        `FTCH_LDR2_S:   state <= `FTCH_LKR2_S;
+        `FTCH_LKR2_S:   state <= `FTCH_P2_S;
+        `FTCH_P2_S:     state <= `PC_INC_S;
         
         `HLT_S:         state <= `HLT_S;    
         
@@ -363,6 +376,19 @@ always@ (negedge clk)
                             PC_w        <= 0;
                             memory_w    <= 0;
 
+                            end
+                          
+                    `FTCH:  begin
+                    
+                            addr_sel    <= `ADDR_SR; 
+                    
+                            cmd_w       <= 0;
+                            R1_w        <= 0;
+                            R2_w        <= 0;
+                            SR_w        <= 0;
+                            PC_w        <= 0;
+                            memory_w    <= 0;
+                            
                             end
                           
                     endcase
@@ -760,6 +786,62 @@ always@ (negedge clk)
                 
                         end    
 
+//------------------------------------------------------------------------------------------------
+//FTCH branch
+        `FTCH_LDR1_S:   begin
+        
+                        addr_sel    <= `ADDR_R1; 
+                    
+                        cmd_w       <= 0;
+                        R1_w        <= 1;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+        
+                        end
+                        
+        `FTCH_LDR2_S:   begin
+        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 1;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+        
+                        end
+
+        `FTCH_LKR2_S:   begin
+        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 1;
+                        SR_w        <= 0;
+                        PC_w        <= 0;
+                        memory_w    <= 0;
+        
+                        end
+         
+        `FTCH_P2_S:     begin
+        
+                        addr_sel    <= `ADDR_SR;
+                        data_sel    <= `DATA_ALU;
+                        
+                        ALU_func    <= `ALU_R2;
+                        
+                        PC_inc      <= `IDC_INC;
+                        PC_incc     <= `PC_ID;
+                        PC_w        <= 1;
+        
+                        cmd_w       <= 0;
+                        R1_w        <= 0;
+                        R2_w        <= 0;
+                        SR_w        <= 0;
+                        memory_w    <= 1;
+        
+                        end
+                        
 //------------------------------------------------------------------------------------------------
 //End of all branches
                        

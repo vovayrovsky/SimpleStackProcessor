@@ -35,8 +35,8 @@ Compiling module top
 Compiling module testtop
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 2 sub-compilation(s) to finish...
+Waiting for 1 sub-compilation(s) to finish...
 Compiled 15 Verilog Units
 Built simulation executable C:/Users/KekKuLe/Desktop/temp/Code/SSP/SimpleStackProcessor/FPGA/testtop_isim_beh.exe
-Fuse Memory Usage: 30760 KB
-Fuse CPU Usage: 561 ms
+Fuse Memory Usage: 30896 KB
+Fuse CPU Usage: 498 ms
